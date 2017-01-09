@@ -3,13 +3,13 @@ package application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.text.Text;
 
 public class Controller {
-	@FXML
-	Button button1;
-	
-	@FXML protected void handleSubmitButton1Action(ActionEvent event) {
-		button1.setText("Button pressed maggle");
-    }
+	@FXML private Text actiontarget;
+
+	@FXML protected void handleSubmitButtonAction(ActionEvent event) {
+		actiontarget.setText("Button pressed maggle");
+	}
 
 }
