@@ -12,7 +12,7 @@ public class Main extends Application {
 		try { 
 			AnchorPane page = (AnchorPane) FXMLLoader.load(Main.class.getResource("../Keynotes.fxml"));
 			Scene scene = new Scene(page);
-
+			scene.setRoot(page);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("KeyNotes");

@@ -5,9 +5,10 @@ import javafx.fxml.FXML;
 import javafx.scene.text.Text;
 
 public class Controller {
-	@FXML private Text actiontarget;
+	@FXML protected Text actiontarget;
 
-	@FXML protected void handleSubmitButtonAction(ActionEvent event) {
+	@FXML 
+	protected void handleSubmitButton1Action(ActionEvent event) {
 		actiontarget.setText("Button pressed maggle");
 	}
 
