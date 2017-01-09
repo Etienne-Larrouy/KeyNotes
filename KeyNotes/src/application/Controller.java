@@ -1,10 +1,15 @@
 package application;
 
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+
 public class Controller {
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
+	@FXML
+	Button button1;
+	
+	@FXML protected void handleSubmitButton1Action(ActionEvent event) {
+		button1.setText("Button pressed maggle");
+    }
 
 }
