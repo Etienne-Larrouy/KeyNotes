@@ -19,6 +19,6 @@
           <Double fx:value="-60.0" />
         </points>
       </Polygon>
-      <Ellipse fill="#ff1fa7" layoutX="276.0" layoutY="306.0" radiusX="100.0" radiusY="80.0" stroke="BLACK" strokeType="INSIDE" />
+      <Ellipse fill="#ff1fa7" layoutX="311.0" layoutY="214.0" radiusX="311.0" radiusY="214.0" stroke="BLACK" strokeType="INSIDE" />
    </children>
 </AnchorPane>
