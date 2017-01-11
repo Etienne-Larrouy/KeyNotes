@@ -1,4 +1,4 @@
-package application;
+package view;
 	
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -10,7 +10,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try { 
-			AnchorPane page = (AnchorPane) FXMLLoader.load(Main.class.getResource("../Keynotes.fxml"));
+			AnchorPane page = (AnchorPane) FXMLLoader.load(Main.class.getResource("../view/Accueil.fxml"));
 			Scene scene = new Scene(page);
 			scene.setRoot(page);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
