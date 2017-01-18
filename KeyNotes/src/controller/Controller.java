@@ -5,7 +5,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import javafx.collections.MapChangeListener;
+import javafx.collections.ListChangeListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,8 +13,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
@@ -25,21 +25,22 @@ import model.Note;
 import model.Notes;
 
 public class Controller implements  Initializable{
+
+	Notes lNotes;
+
 	@FXML
 	private Text actiontarget;
-	
+
 	@FXML
 	private Label texteNote;
 
 	@FXML
 	private Label titleNote;
-	
+
 	@FXML
 	private Pane main;
 
-	@FXML
-	private GridPane note;
-	
+
 	@FXML
 	private FlowPane listNote;
 
@@ -53,8 +54,10 @@ public class Controller implements  Initializable{
 		// TODO
 	}
 
+	@FXML
 	protected void addNote(ActionEvent event) {
-		// TODO
+		Note n2 = new Note("Titre de la note2", "Quo cognito Constantius ultra mortalem modum exarsit ac nequo casu idem Gallus de futuris incertus agitare quaedam conducentia saluti suae per itinera conaretur, remoti sunt omnes de industria milites agentes in civitatibus perviis.");		
+		lNotes.addNote(n2);
 	}
 
 	protected void addKeyword(ActionEvent event) {
@@ -89,23 +92,35 @@ public class Controller implements  Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
-		System.out.println("lol");
 		Keywords kw = new Keywords("Course", "Programming", "JavaFx");
-		Note n = new Note("Titre de la note", "Quo cognito Constantius ultra mortalem modum exarsit ac nequo casu idem Gallus de futuris incertus agitare quaedam conducentia saluti suae per itinera conaretur, remoti sunt omnes de industria milites agentes in civitatibus perviis.");		
+		Note n1 = new Note("Titre de la note", "Quo cognito Constantius ultra mortalem modum exarsit ac nequo casu idem Gallus de futuris incertus agitare quaedam conducentia saluti suae per itinera conaretur, remoti sunt omnes de industria milites agentes in civitatibus perviis.");		
 		
-		kw.getObservableList().addListener((MapChangeListener<String, Integer>) change ->{
-			try {
-				note = FXMLLoader.load(getClass().getResource("../view/Note.fxml"));
-				n.getTexteProperty().bindBidirectional(texteNote.textProperty());
-				n.getTitleProperty().bindBidirectional(titleNote.textProperty());
+		lNotes = new Notes(n1);
+
+		lNotes.getObservableList().addListener((ListChangeListener<Note>) change ->{
+			while(change.next()){
+//				 for (Note remitem : change.getRemoved()) {
+//					 System.out.println("suppr");
+//                 }
+                 for (Note n : change.getAddedSubList()) {
+                     try {
+     					
+     					GridPane note = FXMLLoader.load(getClass().getResource("../view/Note.fxml"));
+     					
+     					((Label)note.getChildren().get(1)).setText(n.getTexte());
+     					((Label)note.getChildren().get(0)).setText(n.getTitle());
+     				
+     					n.getTexteProperty().bindBidirectional(((Label)note.getChildren().get(1)).textProperty());
+     					n.getTitleProperty().bindBidirectional(((Label)note.getChildren().get(0)).textProperty());
+
+     					listNote.getChildren().add(note);
+     				} catch (IOException e) {
+     					e.printStackTrace();
+     				}
+                 }
 				
-				listNote.getChildren().add(note);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 			}
 		});
-		
 	}
 
 }

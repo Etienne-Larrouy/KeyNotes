@@ -2,11 +2,13 @@ package model;
 
 import java.util.ArrayList;
 
+import javafx.beans.property.ReadOnlyStringProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class Note {
-	private StringProperty title;
-	private StringProperty texte;
+	private StringProperty title = new SimpleStringProperty();
+	private StringProperty texte = new SimpleStringProperty();
 	private ArrayList<String> keywords = new ArrayList<String>();
 	
 	public Note(String title, String texte){
