@@ -1,52 +1,55 @@
 package controller;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.List;
+import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.Note;
 
-public class Controller {
+public class Controller implements  Initializable{
 	@FXML
-	protected Text actiontarget;
+	private Text actiontarget;
+	
+	@FXML
+	private Pane main;
+	
+	@FXML
+	private BorderPane note;
 
 	@FXML
 	protected void handleSubmitButton1Action(ActionEvent event) {
 		actiontarget.setText("Button pressed maggle");
 	}
 
-	@FXML
-	protected List<Note> search(ActionEvent event) {
 
-		return null;
+	protected void search(ActionEvent event) {
+		// TODO
 	}
 
-	@FXML
-	protected List<Note> addNote(ActionEvent event) {
-
-		return null;
+	protected void addNote(ActionEvent event) {
+		// TODO
 	}
 
-	@FXML
-	protected List<Note> addKeyword(ActionEvent event) {
-
-		return null;
+	protected void addKeyword(ActionEvent event) {
+		// TODO
 	}
 
-	@FXML
-	protected List<Note> modifyNote(ActionEvent event) {
-
-		return null;
+	protected void modifyNote(ActionEvent event) {
+		// TODO
 	}
 
-	@FXML
 	protected void displayNote(MouseEvent event) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/Note.fxml"));
@@ -57,7 +60,6 @@ public class Controller {
 
 			stage.show();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -67,6 +69,11 @@ public class Controller {
 	protected List<Note> deleteNote(ActionEvent event) {
 
 		return null;
+	}
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		
 	}
 
 }

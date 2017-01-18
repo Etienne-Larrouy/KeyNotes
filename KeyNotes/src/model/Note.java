@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Note {
 	private String Title;
 	private String Texte;
-	private ArrayList<Keyword> keywords = new ArrayList<Keyword>();
+	private ArrayList<String> keywords = new ArrayList<String>();
 	
 	/* Getters and setters*/
 	public String getTitle() {
@@ -28,11 +28,11 @@ public class Note {
 	}
 
 
-	public ArrayList<Keyword> getKeywords() {
+	public ArrayList<String> getKeywords() {
 		return keywords;
 	}
 	
-	public void addKeyword(Keyword kw){
+	public void addKeyword(String kw){
 		this.keywords.add(kw);
 	}
 	
