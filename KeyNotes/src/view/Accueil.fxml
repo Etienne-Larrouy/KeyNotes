@@ -60,6 +60,7 @@
             <Button mnemonicParsing="false" text="Course" />
             <Button mnemonicParsing="false" text="Java" />
             <Button mnemonicParsing="false" text="Programming" />
+            <Button mnemonicParsing="false" text="System" />
          </children>
       </HBox>
    </bottom>
