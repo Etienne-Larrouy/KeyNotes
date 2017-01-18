@@ -147,7 +147,7 @@
                   </ToggleButton>
                </children>
             </HBox>
-            <Button mnemonicParsing="false" text="Retour" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowSpan="2" />
+            <Button mnemonicParsing="false" text="Return" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowSpan="2" />
          </children>
       </GridPane>
    </top>
