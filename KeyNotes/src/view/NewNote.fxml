@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -25,9 +26,9 @@
         </columnConstraints>
         <rowConstraints>
           <RowConstraints maxHeight="181.0" minHeight="10.0" prefHeight="78.0" vgrow="NEVER" />
-          <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="45.0" vgrow="NEVER" />
-          <RowConstraints maxHeight="333.0" minHeight="0.0" prefHeight="57.0" vgrow="NEVER" />
-            <RowConstraints maxHeight="279.0" minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
+          <RowConstraints maxHeight="45.0" minHeight="10.0" prefHeight="45.0" vgrow="NEVER" />
+          <RowConstraints maxHeight="333.0" minHeight="0.0" prefHeight="29.0" vgrow="NEVER" />
+            <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="50.0" vgrow="NEVER" />
             <RowConstraints maxHeight="319.0" minHeight="10.0" prefHeight="15.0" vgrow="NEVER" />
             <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="224.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="332.0" minHeight="10.0" prefHeight="69.0" vgrow="NEVER" />
@@ -98,10 +99,22 @@
          <children>
             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnSpan="3" GridPane.rowIndex="2">
                <children>
-                  <Label maxHeight="1.7976931348623157E308" text="Order by  : " />
-                  <Button mnemonicParsing="false" text="Keywords" />
-                  <Button mnemonicParsing="false" text="Date" />
-                  <Button mnemonicParsing="false" text="Title" />
+                  <Label maxHeight="1.7976931348623157E308" text="Order by  : ">
+                     <HBox.margin>
+                        <Insets left="50.0" />
+                     </HBox.margin></Label>
+                  <Button mnemonicParsing="false" text="Keywords">
+                     <HBox.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </HBox.margin></Button>
+                  <Button mnemonicParsing="false" text="Date">
+                     <HBox.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </HBox.margin></Button>
+                  <Button mnemonicParsing="false" text="Title">
+                     <HBox.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </HBox.margin></Button>
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.halignment="CENTER">
@@ -109,9 +122,29 @@
                   <TextField promptText="Search" />
                   <Button mnemonicParsing="false" text="Search" />
                </children></HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
                   <Label maxHeight="1.7976931348623157E308" text="Search in :" />
+                  <ToggleButton mnemonicParsing="false" text="Keyword">
+                     <HBox.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </HBox.margin>
+                  </ToggleButton>
+                  <ToggleButton mnemonicParsing="false" text="Title">
+                     <HBox.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </HBox.margin>
+                  </ToggleButton>
+                  <ToggleButton mnemonicParsing="false" text="Note">
+                     <HBox.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </HBox.margin>
+                  </ToggleButton>
+                  <ToggleButton mnemonicParsing="false" text="All">
+                     <HBox.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </HBox.margin>
+                  </ToggleButton>
                </children>
             </HBox>
             <Button mnemonicParsing="false" text="Add" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowSpan="2" />
