@@ -13,9 +13,22 @@ public class Keywords {
 
     // Now add observability by wrapping it with ObservableMap.
     private ObservableMap<String, Integer> observableMap = FXCollections.observableMap(keywords);
-
+    
+    //Constructor with multiple keywords
+    public Keywords(String...kw){
+    	for(int i = 0; i<kw.length;i++){
+    		this.addKeywords(kw[i]);
+    	}
+    }
+    
+    //Add keyword to the observable map
 	public void addKeywords(String kw) {
-		this.observableMap.put(kw, 0);
+		if(this.observableMap.containsKey(kw)){
+			this.observableMap.put(kw, this.observableMap.get(kw)+1);
+		}
+		else{
+			this.observableMap.put(kw, 0);
+		}
 	}
 
 	public ObservableMap<String, Integer> getObservableList() {

@@ -2,29 +2,42 @@ package model;
 
 import java.util.ArrayList;
 
+import javafx.beans.property.StringProperty;
+
 public class Note {
-	private String Title;
-	private String Texte;
+	private StringProperty title;
+	private StringProperty texte;
 	private ArrayList<String> keywords = new ArrayList<String>();
 	
-	/* Getters and setters*/
-	public String getTitle() {
-		return Title;
+	public Note(String title, String texte){
+		this.setTexte(texte);
+		this.setTitle(title);
 	}
-
 	
-	public void setTitle(String title) {
-		Title = title;
+	/* Getters and setters*/
+	public final String getTitle() {
+		return this.title.get();
 	}
 
+	public void setTitle(String title) {
+		this.title.set(title);
+	}
 
-	public String getTexte() {
-		return Texte;
+	public StringProperty getTitleProperty() {
+		return this.title;
+	}
+	
+	public StringProperty getTexteProperty() {
+		return this.texte;
+	}
+
+	public final String getTexte() {
+		return this.texte.get();
 	}
 
 
 	public void setTexte(String texte) {
-		Texte = texte;
+		this.texte.set(texte);
 	}
 
 
@@ -35,8 +48,5 @@ public class Note {
 	public void addKeyword(String kw){
 		this.keywords.add(kw);
 	}
-	
-	public static void main(String []args){
-		
-	}
+
 }
