@@ -35,6 +35,10 @@ public class ControllerEditNote implements Initializable{
 		this.stage = s;
 	}
 	
+	@FXML
+	public void addkeyword (ActionEvent event){
+	
+	}
 
 	@FXML
 	public void saveChanges(ActionEvent event){
