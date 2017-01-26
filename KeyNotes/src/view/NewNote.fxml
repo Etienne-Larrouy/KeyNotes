@@ -64,7 +64,7 @@
                </font>
             </Label>
             <TextArea fx:id="content" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="217.0" prefWidth="527.0" promptText="Texte" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="5" />
-            <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="36.0" prefWidth="58.0" text="Filtres : " GridPane.columnIndex="1" GridPane.rowIndex="7">
+            <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="36.0" prefWidth="58.0" text="Keywords" GridPane.columnIndex="1" GridPane.rowIndex="7">
                <padding>
                   <Insets left="5.0" />
                </padding>
@@ -74,7 +74,8 @@
             </Label>
             <HBox fx:id="keywords_container" alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="23.0" prefWidth="442.0" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="7" GridPane.valignment="CENTER">
                <children>
-                  <Button contentDisplay="CENTER" mnemonicParsing="false" text="Add">
+                  <TextField fx:id="keyword" prefHeight="37.0" prefWidth="60.0" promptText="Keyword" />
+                  <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#addKeyword" text="Add">
                      <HBox.margin>
                         <Insets left="5.0" />
                      </HBox.margin></Button>
