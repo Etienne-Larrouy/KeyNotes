@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -14,7 +16,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="542.0" prefWidth="787.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="542.0" prefWidth="787.0" stylesheets="@HeaderTheme.css" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <GridPane prefHeight="561.0" prefWidth="824.0" BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -85,9 +87,9 @@
    <top>
       <GridPane prefWidth="833.0" BorderPane.alignment="CENTER">
         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="20.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="60.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="20.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" percentWidth="20.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" percentWidth="60.0" prefWidth="100.0" />
+          <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" percentWidth="20.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -95,57 +97,15 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnSpan="3" GridPane.rowIndex="2">
-               <children>
-                  <Label maxHeight="1.7976931348623157E308" text="Order by  : ">
-                     <HBox.margin>
-                        <Insets left="50.0" />
-                     </HBox.margin></Label>
-                  <Button mnemonicParsing="false" text="Keywords">
-                     <HBox.margin>
-                        <Insets left="5.0" right="5.0" />
-                     </HBox.margin></Button>
-                  <Button mnemonicParsing="false" text="Date">
-                     <HBox.margin>
-                        <Insets left="5.0" right="5.0" />
-                     </HBox.margin></Button>
-                  <Button mnemonicParsing="false" text="Title">
-                     <HBox.margin>
-                        <Insets left="5.0" right="5.0" />
-                     </HBox.margin></Button>
-               </children>
-            </HBox>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.halignment="CENTER">
-               <children>
-                  <TextField promptText="Search" />
-                  <Button mnemonicParsing="false" text="Search" />
-               </children></HBox>
-            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-               <children>
-                  <Label maxHeight="1.7976931348623157E308" text="Search in :" />
-                  <ToggleButton mnemonicParsing="false" text="Keyword">
-                     <HBox.margin>
-                        <Insets left="5.0" right="5.0" />
-                     </HBox.margin>
-                  </ToggleButton>
-                  <ToggleButton mnemonicParsing="false" text="Title">
-                     <HBox.margin>
-                        <Insets left="5.0" right="5.0" />
-                     </HBox.margin>
-                  </ToggleButton>
-                  <ToggleButton mnemonicParsing="false" text="Note">
-                     <HBox.margin>
-                        <Insets left="5.0" right="5.0" />
-                     </HBox.margin>
-                  </ToggleButton>
-                  <ToggleButton mnemonicParsing="false" text="All">
-                     <HBox.margin>
-                        <Insets left="5.0" right="5.0" />
-                     </HBox.margin>
-                  </ToggleButton>
-               </children>
-            </HBox>
-            <Button mnemonicParsing="false" text="Return" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowSpan="2" />
+            <ImageView fitHeight="93.0" fitWidth="788.0" pickOnBounds="true" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowSpan="3" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+               <image>
+                  <Image url="@../resources/fond_top.png" />
+               </image>
+               <viewport>
+                  <Rectangle2D width="6000.0" />
+               </viewport>
+            </ImageView>
+            <Button mnemonicParsing="false" text="Return" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowSpan="3" GridPane.valignment="CENTER" />
          </children>
       </GridPane>
    </top>
