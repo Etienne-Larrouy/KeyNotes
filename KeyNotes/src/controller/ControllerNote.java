@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.HBox;
@@ -70,5 +71,9 @@ public class ControllerNote implements Initializable {
 		// TODO Auto-generated method stub
 		title.setText(currentNote.getTitle());
 		content.setText(currentNote.getTexte());
+		
+		for(String kw : currentNote.getKeywords()){
+			keywords_container.getChildren().add(new HBox(new Label(kw)));
+		}
 	}
 }

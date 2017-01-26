@@ -5,11 +5,17 @@ import java.util.ArrayList;
 import javafx.beans.property.ReadOnlyStringProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.Node;
 
 public class Note {
 	private StringProperty title = new SimpleStringProperty();
 	private StringProperty texte = new SimpleStringProperty();
 	private ArrayList<String> keywords = new ArrayList<String>();
+	
+	ObservableList<String> observableListKeywords = FXCollections.observableList(keywords);
+	
 	private int id;
 	
 	public Note(String title, String texte, int id){
@@ -59,7 +65,11 @@ public class Note {
 	}
 	
 	public void addKeyword(String kw){
-		this.keywords.add(kw);
+		this.observableListKeywords.add(kw);
+	}
+
+	public ObservableList<String> getObservableListKeywords() {
+		return this.observableListKeywords;
 	}
 
 }

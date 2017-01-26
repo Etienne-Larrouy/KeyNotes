@@ -4,17 +4,25 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.collections.ListChangeListener;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.Note;
+import model.Notes;
 
 public class ControllerEditNote implements Initializable{
 
@@ -22,7 +30,13 @@ public class ControllerEditNote implements Initializable{
 	private Note currentNote;
 	
 	@FXML
+	private HBox keywords_container;
+	
+	@FXML
 	private TextField title;
+	
+	@FXML
+	private TextField keyword;
 	
 	@FXML
 	private TextArea content;
@@ -37,7 +51,7 @@ public class ControllerEditNote implements Initializable{
 	
 	@FXML
 	public void addkeyword (ActionEvent event){
-	
+		this.currentNote.addKeyword(keyword.getText());
 	}
 
 	@FXML
@@ -51,6 +65,14 @@ public class ControllerEditNote implements Initializable{
 		else{
 			this.currentNote.setTitle(title.getText());
 			this.currentNote.setTexte(content.getText());
+			
+			int i = 0;
+			for(Node kw : keywords_container.getChildren()){
+				if(i>1)
+					this.currentNote.addKeyword(((Label)(((HBox)kw).getChildren().get(0))).getText());
+				i++;
+			}
+			
 		}
 		
 		try {
@@ -81,6 +103,40 @@ public class ControllerEditNote implements Initializable{
 		// TODO Auto-generated method stub
 		title.setText(currentNote.getTitle());
 		content.setText(currentNote.getTexte());
+		
+		for(String kw : currentNote.getKeywords()){
+			Button b = new Button("x");
+			HBox hbox = new HBox(new Label(kw), b);
+			
+			b.setOnAction(new EventHandler<ActionEvent>() {
+			    @Override
+			    public void handle(ActionEvent actionEvent) {
+			    	keywords_container.getChildren().remove(hbox);
+					currentNote.getObservableListKeywords().remove(kw);
+			    }
+			});
+			
+			keywords_container.getChildren().add(hbox);
+		}
+		
+		currentNote.getObservableListKeywords().addListener((ListChangeListener<String>) change -> {
+			while (change.next()) {
+				for (String kw : change.getAddedSubList()) {
+					Button b = new Button("x");
+					HBox hbox = new HBox(new Label(kw), b);
+					
+					b.setOnAction(new EventHandler<ActionEvent>() {
+					    @Override
+					    public void handle(ActionEvent actionEvent) {
+					    	keywords_container.getChildren().remove(hbox);
+					    }
+					});
+					
+					keywords_container.getChildren().add(hbox);
+				}
+
+			}
+		});
 	}
 
 }

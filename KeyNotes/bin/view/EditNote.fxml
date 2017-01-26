@@ -70,7 +70,7 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <HBox fx:id="filtres" alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="23.0" prefWidth="442.0" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="7" GridPane.valignment="CENTER">
+            <HBox fx:id="keywords_container" alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="23.0" prefWidth="442.0" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="7" GridPane.valignment="CENTER">
                <children>
                   <TextField fx:id="keyword" prefHeight="25.0" prefWidth="82.0" />
                   <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#addkeyword" text="Add">
