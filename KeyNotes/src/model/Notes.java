@@ -36,4 +36,8 @@ public class Notes {
 	public ObservableList<Note> getObservableList() {
 		return observableListNotes;
 	}
+	
+	public void removeNote(Note n) {
+		observableListNotes.remove(n.getId());
+	}
 }

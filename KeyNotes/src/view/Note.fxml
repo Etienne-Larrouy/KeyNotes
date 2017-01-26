@@ -61,6 +61,7 @@
                </font>
             </Label>
             <HBox fx:id="keywords_container" alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="23.0" prefWidth="442.0" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="7" GridPane.valignment="CENTER" />
+            <Button mnemonicParsing="false" onAction="#removeNote" text="Remove" GridPane.columnIndex="4" GridPane.rowIndex="8" />
          </children>
       </GridPane>
    </center>

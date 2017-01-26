@@ -54,6 +54,7 @@
                   <ToggleButton mnemonicParsing="false" text="Note" />
                </children>
             </HBox>
+            <Button mnemonicParsing="false" onAction="#createNote" text="Add" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
          </children>
       </GridPane>
    </top>
