@@ -13,7 +13,8 @@ public class Notes {
 	// Now add observability by wrapping it with ObservableList.
 	ObservableList<Note> observableListNotes;
 
-	private static Notes notesInstance = new Notes();
+	private static Notes notesInstance = new Notes(new Note("Titre de la note", "Quo cognito Constantius ultra mortalem modum exarsit ac nequo casu idem Gallus de futuris incertus agitare quaedam conducentia saluti suae per itinera conaretur, remoti sunt omnes de industria milites agentes in civitatibus perviis.", 0));		
+
 	
 	public static Notes getInstance(){
 		return notesInstance;

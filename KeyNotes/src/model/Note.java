@@ -10,13 +10,24 @@ public class Note {
 	private StringProperty title = new SimpleStringProperty();
 	private StringProperty texte = new SimpleStringProperty();
 	private ArrayList<String> keywords = new ArrayList<String>();
+	private int id;
 	
-	public Note(String title, String texte){
+	public Note(String title, String texte, int id){
 		this.setTexte(texte);
 		this.setTitle(title);
+		this.id = id;
 	}
 	
 	/* Getters and setters*/
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	
 	public final String getTitle() {
 		return this.title.get();
 	}

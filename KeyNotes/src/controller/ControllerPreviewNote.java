@@ -9,11 +9,12 @@ import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import model.Notes;
 
 public class ControllerPreviewNote{
 
 	@FXML
-	private Text TaskPreview_id;
+	private Text NotePreview_id;
 
 	@FXML
 	public void openTask(MouseEvent event) throws IOException {
@@ -22,7 +23,7 @@ public class ControllerPreviewNote{
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/Note.fxml"));
 
 
-		ControllerNote controller = new ControllerNote();
+		ControllerNote controller = new ControllerNote(Notes.getInstance().getObservableList().get(Integer.parseInt(NotePreview_id.getText())));
 		// Set it in the FXMLLoader
 		loader.setController(controller);
 
