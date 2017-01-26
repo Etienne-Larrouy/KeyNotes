@@ -34,10 +34,12 @@ public class ControllerNewNote {
 		} else {
 			Notes.getInstance().addNote(
 					new Note(title.getText(), content.getText(), Notes.getInstance().getObservableList().size()));
+			
+			Stage stage = (Stage) title.getScene().getWindow();
+			stage.close();
 		}
 
-		Stage stage = (Stage) title.getScene().getWindow();
-		stage.close();
+
 
 	}
 
