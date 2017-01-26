@@ -70,6 +70,8 @@
                <children>
                   <Button fx:id="addButton" mnemonicParsing="false" prefHeight="33.0" prefWidth="39.0" text="Button" />
                </children></HBox>
+                <Button mnemonicParsing="false" onAction="#removeNote" text="Remove" GridPane.columnIndex="4" GridPane.rowIndex="8" />
+        
          </children>
       </GridPane>
    </center>

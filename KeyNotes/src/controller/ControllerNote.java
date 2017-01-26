@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
@@ -15,6 +16,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import model.Note;
+import model.Notes;
 
 public class ControllerNote implements Initializable {
 
@@ -33,6 +35,13 @@ public class ControllerNote implements Initializable {
 		this.currentNote = t;
 	}
 
+	@FXML
+	protected void removeNote(ActionEvent event) {
+		Notes.getInstance().removeNote(currentNote);
+		Stage stage = (Stage) title.getScene().getWindow();
+		stage.close();
+	}
+	
 	@FXML
 	protected void editNote(ActionEvent event) {
 		Stage stage = null;
