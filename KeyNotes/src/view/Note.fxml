@@ -33,7 +33,7 @@
             <RowConstraints maxHeight="319.0" minHeight="10.0" prefHeight="15.0" vgrow="NEVER" />
             <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="224.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="332.0" minHeight="10.0" prefHeight="69.0" vgrow="NEVER" />
-            <RowConstraints maxHeight="332.0" minHeight="10.0" prefHeight="45.0" vgrow="NEVER" />
+            <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="NEVER" />
             <RowConstraints maxHeight="332.0" minHeight="10.0" prefHeight="44.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
@@ -66,12 +66,8 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <HBox fx:id="keywords_container" alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="23.0" prefWidth="442.0" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="7" GridPane.valignment="CENTER">
-               <children>
-                  <Button fx:id="addButton" mnemonicParsing="false" prefHeight="33.0" prefWidth="39.0" text="Button" />
-               </children></HBox>
-                <Button mnemonicParsing="false" onAction="#removeNote" text="Remove" GridPane.columnIndex="4" GridPane.rowIndex="8" />
-        
+            <HBox fx:id="keywords_container" alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="23.0" prefWidth="442.0" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="7" GridPane.valignment="CENTER" />
+            <Button mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#removeNote" text="Remove" GridPane.columnIndex="3" GridPane.rowIndex="1" />
          </children>
       </GridPane>
    </center>
