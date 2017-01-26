@@ -12,8 +12,9 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="542.0" prefWidth="787.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="542.0" prefWidth="787.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <GridPane prefHeight="561.0" prefWidth="824.0" BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -44,7 +45,7 @@
                   <Font size="14.0" />
                </font>
             </TextField>
-            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Editer" GridPane.columnIndex="4" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.vgrow="NEVER">
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#saveChanges" text="Save" GridPane.columnIndex="4" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.vgrow="NEVER">
                <font>
                   <Font size="14.0" />
                </font>
@@ -60,7 +61,7 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <TextArea maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="217.0" prefWidth="527.0" text="Note prérempli&#10;" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="5" />
+            <TextArea fx:id="content" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="217.0" prefWidth="527.0" text="Note prérempli&#10;" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="5" />
             <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="36.0" prefWidth="58.0" text="Filtres : " GridPane.columnIndex="1" GridPane.rowIndex="7">
                <padding>
                   <Insets left="5.0" />
@@ -81,6 +82,7 @@
                         <Insets left="5.0" />
                      </HBox.margin></Button>
                </children></HBox>
+            <Text fx:id="statusbar" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="444.13671875" GridPane.columnIndex="1" />
          </children>
       </GridPane>
    </center>
