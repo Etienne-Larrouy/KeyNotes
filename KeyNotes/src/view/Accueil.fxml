@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #EFF0E4;" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Controller">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #EFF0E4;" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Controller">
    <center>
       <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <content>
@@ -61,15 +61,15 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.halignment="CENTER">
                <children>
-                  <TextField maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="33.0" prefWidth="268.0" promptText="Search" />
-                  <Button mnemonicParsing="false" text="Search" />
+                  <TextField fx:id="searchField" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#handleSearch" prefHeight="33.0" prefWidth="268.0" promptText="Search" />
+                  <Button mnemonicParsing="false" onAction="#handleSearch" text="Search" />
                </children></HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <children>
                   <Label maxHeight="1.7976931348623157E308" text="Search in :" />
-                  <ToggleButton mnemonicParsing="false" text="Keywords" />
-                  <ToggleButton mnemonicParsing="false" text="Title" />
-                  <ToggleButton mnemonicParsing="false" text="Note" />
+                  <ToggleButton fx:id="keywordsSearch" mnemonicParsing="false" text="Keywords" />
+                  <ToggleButton fx:id="titleSearch" mnemonicParsing="false" text="Title" />
+                  <ToggleButton fx:id="noteSearch" mnemonicParsing="false" text="Note" />
                </children>
             </HBox>
             <Button mnemonicParsing="false" onAction="#createNote" text="Add" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" />

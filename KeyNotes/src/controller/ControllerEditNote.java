@@ -28,31 +28,43 @@ public class ControllerEditNote implements Initializable{
 
 	private Stage stage;
 	private Note currentNote;
-	
+
 	@FXML
 	private HBox keywords_container;
-	
+
 	@FXML
 	private TextField title;
-	
+
 	@FXML
 	private TextField keyword;
-	
+
 	@FXML
 	private TextArea content;
-	
+
 	@FXML
 	private Text statusbar;
-	
+
 	public ControllerEditNote(Note n, Stage s) {
 		this.currentNote = n;
 		this.stage = s;
 	}
-	
+
 	@FXML
-	public void addkeyword (ActionEvent event){
-		this.currentNote.addKeyword(keyword.getText());
+	public void addKeyword(ActionEvent event){
+		Button b = new Button("x");
+		HBox hbox = new HBox(new Label(keyword.getText()), b);
+		if(!this.currentNote.getKeywords().contains(keyword.getText())){
+			b.setOnAction(new EventHandler<ActionEvent>() {
+				@Override
+				public void handle(ActionEvent actionEvent) {
+					keywords_container.getChildren().remove(hbox);
+				}
+			});
+
+			keywords_container.getChildren().add(hbox);
+		}
 	}
+
 
 	@FXML
 	public void saveChanges(ActionEvent event){
@@ -65,16 +77,20 @@ public class ControllerEditNote implements Initializable{
 		else{
 			this.currentNote.setTitle(title.getText());
 			this.currentNote.setTexte(content.getText());
-			
+
 			int i = 0;
 			for(Node kw : keywords_container.getChildren()){
-				if(i>1)
-					this.currentNote.addKeyword(((Label)(((HBox)kw).getChildren().get(0))).getText());
+				if(i>1){
+					if(!this.currentNote.getKeywords().contains(((Label)(((HBox)kw).getChildren().get(0))).getText())){
+						this.currentNote.addKeyword(((Label)(((HBox)kw).getChildren().get(0))).getText());
+					}
+				}
 				i++;
 			}
-			
+
+
 		}
-		
+
 		try {
 
 			Parent root = null;
@@ -89,7 +105,7 @@ public class ControllerEditNote implements Initializable{
 			Scene scene = new Scene(root);
 			this.stage.setScene(scene);
 			this.stage.show();
-			
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -103,40 +119,22 @@ public class ControllerEditNote implements Initializable{
 		// TODO Auto-generated method stub
 		title.setText(currentNote.getTitle());
 		content.setText(currentNote.getTexte());
-		
+
 		for(String kw : currentNote.getKeywords()){
 			Button b = new Button("x");
 			HBox hbox = new HBox(new Label(kw), b);
-			
+
 			b.setOnAction(new EventHandler<ActionEvent>() {
-			    @Override
-			    public void handle(ActionEvent actionEvent) {
-			    	keywords_container.getChildren().remove(hbox);
+				@Override
+				public void handle(ActionEvent actionEvent) {
+					keywords_container.getChildren().remove(hbox);
 					currentNote.getObservableListKeywords().remove(kw);
-			    }
+				}
 			});
-			
+
 			keywords_container.getChildren().add(hbox);
 		}
-		
-		currentNote.getObservableListKeywords().addListener((ListChangeListener<String>) change -> {
-			while (change.next()) {
-				for (String kw : change.getAddedSubList()) {
-					Button b = new Button("x");
-					HBox hbox = new HBox(new Label(kw), b);
-					
-					b.setOnAction(new EventHandler<ActionEvent>() {
-					    @Override
-					    public void handle(ActionEvent actionEvent) {
-					    	keywords_container.getChildren().remove(hbox);
-					    }
-					});
-					
-					keywords_container.getChildren().add(hbox);
-				}
 
-			}
-		});
 	}
 
 }
