@@ -3,6 +3,8 @@ package controller;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import javafx.collections.ListChangeListener;
@@ -13,8 +15,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
@@ -55,6 +59,15 @@ public class Controller implements Initializable {
 	private FlowPane listNote;
 
 	@FXML
+	private RadioButton titleButton;
+
+	@FXML
+	private RadioButton keywordsButton;
+
+	@FXML
+	private RadioButton dateButton;
+
+	@FXML
 	protected void createNote(ActionEvent event) {
 		Stage stage = null;
 		Parent root = null;
@@ -74,11 +87,121 @@ public class Controller implements Initializable {
 	}
 
 	@FXML
+	protected void orderByTitle(ActionEvent event) {
+
+		List<Note> list = new ArrayList<Note>();
+
+		// Remove current displayed notes
+		listNote.getChildren().remove(0, listNote.getChildren().size());
+
+		// Browse all notes
+		for (Note n : Notes.getInstance().getObservableList()) {
+			list.add(n);
+			Collections.sort(list);
+		}
+		
+		Notes.getInstance().setListToObserve(list);
+		
+		for (Note n : Notes.getInstance().getObservableList()) {
+			try {
+
+				GridPane note = FXMLLoader.load(getClass().getResource("../view/PreviewNote.fxml"));
+
+				((Label) note.getChildren().get(1)).setText(n.getTexte());
+				((Label) note.getChildren().get(0)).setText(n.getTitle());
+				((Text) note.getChildren().get(2)).setText(Integer.toString(n.getId()));
+
+				n.getTexteProperty().bindBidirectional(((Label) note.getChildren().get(1)).textProperty());
+				n.getTitleProperty().bindBidirectional(((Label) note.getChildren().get(0)).textProperty());
+
+				listNote.getChildren().add(note);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	@FXML
+	protected void orderByKeywords(ActionEvent event) {
+
+		ArrayList<Note> list = new ArrayList<Note>();
+
+		// Remove current displayed notes
+		listNote.getChildren().remove(0, listNote.getChildren().size());
+		
+
+		// Browse all notes
+		for (Note n : Notes.getInstance().getObservableList()) {
+			list.add(n);
+			Collections.sort(list);
+		}
+		
+		Notes.getInstance().setListToObserve(list);
+		
+		for (Note n : Notes.getInstance().getObservableList()) {
+			try {
+
+				GridPane note = FXMLLoader.load(getClass().getResource("../view/PreviewNote.fxml"));
+
+				((Label) note.getChildren().get(1)).setText(n.getTexte());
+				((Label) note.getChildren().get(0)).setText(n.getTitle());
+				((Text) note.getChildren().get(2)).setText(Integer.toString(n.getId()));
+
+				n.getTexteProperty().bindBidirectional(((Label) note.getChildren().get(1)).textProperty());
+				n.getTitleProperty().bindBidirectional(((Label) note.getChildren().get(0)).textProperty());
+
+				listNote.getChildren().add(note);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+
+	}
+
+	@FXML
+	protected void orderByDate(ActionEvent event) {
+
+		ArrayList<Note> list = new ArrayList<Note>();
+
+		// Remove current displayed notes
+		listNote.getChildren().remove(0, listNote.getChildren().size());
+		
+
+		// Browse all notes
+		for (Note n : Notes.getInstance().getObservableList()) {
+			list.add(n);
+			Collections.sort(list);
+		}
+		
+		Notes.getInstance().setListToObserve(list);
+		
+		for (Note n : Notes.getInstance().getObservableList()) {
+			try {
+
+				GridPane note = FXMLLoader.load(getClass().getResource("../view/PreviewNote.fxml"));
+
+				((Label) note.getChildren().get(1)).setText(n.getTexte());
+				((Label) note.getChildren().get(0)).setText(n.getTitle());
+				((Text) note.getChildren().get(2)).setText(Integer.toString(n.getId()));
+
+				n.getTexteProperty().bindBidirectional(((Label) note.getChildren().get(1)).textProperty());
+				n.getTitleProperty().bindBidirectional(((Label) note.getChildren().get(0)).textProperty());
+
+				listNote.getChildren().add(note);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+
+	}
+
+	@FXML
 	protected void handleSearch(ActionEvent event) {
 		ArrayList<Note> list = new ArrayList<Note>();
-		
+
 		// Remove current displayed notes
-		if(!searchField.getText().isEmpty() && (keywordsSearch.isSelected() || titleSearch.isSelected() || noteSearch.isSelected())){
+		if (!searchField.getText().isEmpty()
+				&& (keywordsSearch.isSelected() || titleSearch.isSelected() || noteSearch.isSelected())) {
 			listNote.getChildren().remove(0, listNote.getChildren().size());
 		}
 		// Browse all notes
@@ -104,9 +227,7 @@ public class Controller implements Initializable {
 				}
 			}
 		}
-		
-		
-		
+
 		for (Note n : list) {
 			try {
 
@@ -128,6 +249,15 @@ public class Controller implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+
+		// Radio button state
+		final ToggleGroup group = new ToggleGroup();
+
+		titleButton.setToggleGroup(group);
+
+		keywordsButton.setToggleGroup(group);
+
+		dateButton.setToggleGroup(group);
 
 		for (Note n : Notes.getInstance().getObservableList()) {
 			try {

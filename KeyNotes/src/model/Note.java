@@ -1,15 +1,15 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
-import javafx.beans.property.ReadOnlyStringProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.Node;
 
-public class Note {
+public class Note  implements Comparable<Note>{
 	private StringProperty title = new SimpleStringProperty();
 	private StringProperty texte = new SimpleStringProperty();
 	private ArrayList<String> keywords = new ArrayList<String>();
@@ -18,13 +18,21 @@ public class Note {
 	
 	private int id;
 	
+	private Date date;
+	
 	public Note(String title, String texte, int id){
 		this.setTexte(texte);
 		this.setTitle(title);
 		this.id = id;
+		this.date = Calendar.getInstance().getTime();
 	}
 	
 	/* Getters and setters*/
+	
+	public Date getDate() {
+		return date;
+	}
+	
 	public int getId() {
 		return id;
 	}
@@ -32,7 +40,6 @@ public class Note {
 	public void setId(int id) {
 		this.id = id;
 	}
-
 	
 	public final String getTitle() {
 		return this.title.get();
@@ -70,6 +77,11 @@ public class Note {
 
 	public ObservableList<String> getObservableListKeywords() {
 		return this.observableListKeywords;
+	}
+
+	@Override
+	public int compareTo(Note o) {
+		return this.getTitle().compareTo(o.getTitle());
 	}
 
 }
