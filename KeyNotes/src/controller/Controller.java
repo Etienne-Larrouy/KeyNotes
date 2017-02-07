@@ -59,13 +59,15 @@ public class Controller implements Initializable {
 	private FlowPane listNote;
 
 	@FXML
-	private RadioButton titleButton;
+	//title
+	private RadioButton keywordsButton1;
 
 	@FXML
 	private RadioButton keywordsButton;
 
 	@FXML
-	private RadioButton dateButton;
+	//date
+	private RadioButton keywordsButton2;
 
 	@FXML
 	protected void createNote(ActionEvent event) {
@@ -253,11 +255,11 @@ public class Controller implements Initializable {
 		// Radio button state
 		final ToggleGroup group = new ToggleGroup();
 
-		titleButton.setToggleGroup(group);
+		keywordsButton1.setToggleGroup(group);
 
 		keywordsButton.setToggleGroup(group);
 
-		dateButton.setToggleGroup(group);
+		keywordsButton2.setToggleGroup(group);
 
 		for (Note n : Notes.getInstance().getObservableList()) {
 			try {
