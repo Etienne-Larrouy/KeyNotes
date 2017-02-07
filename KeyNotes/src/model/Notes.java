@@ -6,7 +6,7 @@ import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-public class Notes {
+public class Notes{
 	// Use Java Collections to create the List.
 	List<Note> listNotes = new ArrayList<Note>();
 
@@ -38,8 +38,13 @@ public class Notes {
 	public ObservableList<Note> getObservableList() {
 		return observableListNotes;
 	}
+	
+	public void setListToObserve(List<Note> list) {
+		this.observableListNotes = FXCollections.observableList(list);
+	}
 
 	public void removeNote(Note n) {
 		observableListNotes.remove(n);
 	}
+
 }
