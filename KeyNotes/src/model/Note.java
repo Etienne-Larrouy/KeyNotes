@@ -73,6 +73,7 @@ public class Note{
 	
 	public void addKeyword(String kw){
 		this.observableListKeywords.add(kw);
+		Notes.getInstance().getKeywords().addKeyword(kw);
 	}
 
 	public ObservableList<String> getObservableListKeywords() {

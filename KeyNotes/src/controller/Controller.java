@@ -4,15 +4,20 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 import javafx.collections.ListChangeListener;
+import javafx.collections.MapChangeListener;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
@@ -20,6 +25,7 @@ import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -65,8 +71,10 @@ public class Controller implements Initializable {
 	private RadioButton keywordsButton;
 
 	@FXML
-	//date
 	private RadioButton keywordsButton2;
+
+	@FXML
+	private HBox keywordsFilter;
 
 	@FXML
 	protected void createNote(ActionEvent event) {
@@ -89,7 +97,7 @@ public class Controller implements Initializable {
 
 	@FXML
 	protected void orderByTitle(ActionEvent event) {
-		
+
 		listNote.getChildren().remove(0, listNote.getChildren().size());
 
 		ArrayList<Note> list = new ArrayList<Note>();
@@ -98,7 +106,7 @@ public class Controller implements Initializable {
 		for (Note n : Notes.getInstance().getObservableList()) {
 			list.add(n);
 		}
-		
+
 		Collections.sort(list, NoteComparator.compareToTitle());
 		Notes.getInstance().setListToObserve(list);
 
@@ -150,16 +158,16 @@ public class Controller implements Initializable {
 
 	@FXML
 	protected void orderByKeywords(ActionEvent event) {
-		
+
 		listNote.getChildren().remove(0, listNote.getChildren().size());
-		
+
 		ArrayList<Note> list = new ArrayList<Note>();
-		
+
 		// Browse all notes
 		for (Note n : Notes.getInstance().getObservableList()) {
 			list.add(n);
 		}
-		
+
 		Collections.sort(list, NoteComparator.compareToKeywords());
 		Notes.getInstance().setListToObserve(list);
 
@@ -207,20 +215,47 @@ public class Controller implements Initializable {
 
 			}
 		});
+
+
+		Notes.getInstance().getObservableList().addListener((ListChangeListener<Note>) change -> {
+			while (change.next()) {
+				for (Note remitem : change.getRemoved()) {
+					listNote.getChildren().remove(remitem.getId());
+				}
+				for (Note n : change.getAddedSubList()) {
+					try {
+
+						GridPane note = FXMLLoader.load(getClass().getResource("../view/PreviewNote.fxml"));
+
+						((Label) note.getChildren().get(1)).setText(n.getTexte());
+						((Label) note.getChildren().get(0)).setText(n.getTitle());
+						((Text) note.getChildren().get(2)).setText(Integer.toString(n.getId()));
+
+						n.getTexteProperty().bindBidirectional(((Label) note.getChildren().get(1)).textProperty());
+						n.getTitleProperty().bindBidirectional(((Label) note.getChildren().get(0)).textProperty());
+
+						listNote.getChildren().add(note);
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
+
+			}
+		});
 	}
 
 	@FXML
 	protected void orderByDate(ActionEvent event) {
 
 		listNote.getChildren().remove(0, listNote.getChildren().size());
-		
+
 		ArrayList<Note> list = new ArrayList<Note>();
-	
+
 		// Browse all notes
 		for (Note n : Notes.getInstance().getObservableList()) {
 			list.add(n);
 		}
-		
+
 		Collections.sort(list, NoteComparator.compareToDate());
 		Notes.getInstance().setListToObserve(list);		
 
@@ -320,8 +355,8 @@ public class Controller implements Initializable {
 				e.printStackTrace();
 			}
 		}
-		
-		
+
+
 	}
 
 	@Override
@@ -354,6 +389,7 @@ public class Controller implements Initializable {
 			}
 		}
 
+		// Add listener to observable list of notes  
 		Notes.getInstance().getObservableList().addListener((ListChangeListener<Note>) change -> {
 			while (change.next()) {
 				for (Note remitem : change.getRemoved()) {
@@ -379,6 +415,57 @@ public class Controller implements Initializable {
 
 			}
 		});
+
+		int i = 0;
+		// Display 10 most used keywords
+		for (Map.Entry<String, Integer> entry  :  Notes.getInstance().getKeywords().getObservableMap().entrySet()) {
+			Button b = new Button(entry.getKey());
+
+			b.setOnAction(new EventHandler<ActionEvent>() {
+				@Override
+				public void handle(ActionEvent actionEvent) {
+					filterKeyword(entry.getKey());
+				}
+			});
+
+			keywordsFilter.getChildren().add(b);
+			i++;
+
+			if(i>=9)
+				break;
+		}
+
+		// Add listener to observable list of used keywords  
+		Notes.getInstance().getKeywords().getObservableMap().addListener((MapChangeListener<String, Integer>) change -> {
+			//Remove the button linked to the removed keyword
+			if (change.wasAdded()) {
+				Button b = new Button(change.getKey());
+
+				b.setOnAction(new EventHandler<ActionEvent>() {
+					@Override
+					public void handle(ActionEvent actionEvent) {
+						filterKeyword(change.getKey());
+					}
+				});
+				
+				keywordsFilter.getChildren().add(b);
+			}
+			
+			//Add the button linkedd to the added keyword
+			if (change.wasRemoved()) {
+				for(Node kw : keywordsFilter.getChildren()){
+					if(((Button)kw).getText().equals(change.getKey())){
+						keywordsFilter.getChildren().remove(kw);
+					}
+				}
+			}
+
+		});
+	}
+
+	protected void filterKeyword(String key) {
+		// TODO Auto-generated method stub
+		System.out.println("lol");
 	}
 
 }

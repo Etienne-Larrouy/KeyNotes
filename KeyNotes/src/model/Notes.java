@@ -9,6 +9,8 @@ import javafx.collections.ObservableList;
 public class Notes{
 	// Use Java Collections to create the List.
 	List<Note> listNotes = new ArrayList<Note>();
+	
+	Keywords kw;
 
 	// Now add observability by wrapping it with ObservableList.
 	ObservableList<Note> observableListNotes;
@@ -23,7 +25,7 @@ public class Notes{
 
 	// Constructor with multiple keywords
 	public Notes(Note... n) {
-
+		kw = new Keywords();
 		observableListNotes = FXCollections.observableArrayList(listNotes);
 		for (int i = 0; i < n.length; i++) {
 			this.addNote(n[i]);
@@ -33,6 +35,11 @@ public class Notes{
 	// Add keyword to the observable map
 	public void addNote(Note n) {
 		this.observableListNotes.add(n);
+	}
+	
+	// Get keywords
+	public Keywords getKeywords() {
+		return this.kw;
 	}
 
 	public ObservableList<Note> getObservableList() {
