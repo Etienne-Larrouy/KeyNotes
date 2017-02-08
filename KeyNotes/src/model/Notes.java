@@ -24,7 +24,7 @@ public class Notes{
 	// Constructor with multiple keywords
 	public Notes(Note... n) {
 
-		observableListNotes = FXCollections.observableList(listNotes);
+		observableListNotes = FXCollections.observableArrayList(listNotes);
 		for (int i = 0; i < n.length; i++) {
 			this.addNote(n[i]);
 		}
@@ -38,9 +38,10 @@ public class Notes{
 	public ObservableList<Note> getObservableList() {
 		return observableListNotes;
 	}
-	
-	public void setListToObserve(List<Note> list) {
-		this.observableListNotes = FXCollections.observableList(list);
+
+	public void setListToObserve(ArrayList<Note> list) {
+
+		observableListNotes = FXCollections.observableArrayList(list);
 	}
 
 	public void removeNote(Note n) {

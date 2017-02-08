@@ -88,20 +88,20 @@ public class Controller implements Initializable {
 
 	@FXML
 	protected void orderByTitle(ActionEvent event) {
-
-		List<Note> list = new ArrayList<Note>();
-
-		// Remove current displayed notes
+		
 		listNote.getChildren().remove(0, listNote.getChildren().size());
+
+		ArrayList<Note> list = new ArrayList<Note>();
 
 		// Browse all notes
 		for (Note n : Notes.getInstance().getObservableList()) {
 			list.add(n);
-			Collections.sort(list);
 		}
 		
+		Collections.sort(list, NoteComparator.compareToTitle());
 		Notes.getInstance().setListToObserve(list);
-		
+
+
 		for (Note n : Notes.getInstance().getObservableList()) {
 			try {
 
@@ -119,25 +119,50 @@ public class Controller implements Initializable {
 				e.printStackTrace();
 			}
 		}
+
+		Notes.getInstance().getObservableList().addListener((ListChangeListener<Note>) change -> {
+			while (change.next()) {
+				for (Note remitem : change.getRemoved()) {
+					listNote.getChildren().remove(remitem.getId());
+				}
+				for (Note n : change.getAddedSubList()) {
+					try {
+
+						GridPane note = FXMLLoader.load(getClass().getResource("../view/PreviewNote.fxml"));
+
+						((Label) note.getChildren().get(1)).setText(n.getTexte());
+						((Label) note.getChildren().get(0)).setText(n.getTitle());
+						((Text) note.getChildren().get(2)).setText(Integer.toString(n.getId()));
+
+						n.getTexteProperty().bindBidirectional(((Label) note.getChildren().get(1)).textProperty());
+						n.getTitleProperty().bindBidirectional(((Label) note.getChildren().get(0)).textProperty());
+
+						listNote.getChildren().add(note);
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
+
+			}
+		});
 	}
 
 	@FXML
 	protected void orderByKeywords(ActionEvent event) {
-
-		ArrayList<Note> list = new ArrayList<Note>();
-
-		// Remove current displayed notes
+		
 		listNote.getChildren().remove(0, listNote.getChildren().size());
 		
-
+		ArrayList<Note> list = new ArrayList<Note>();
+		
 		// Browse all notes
 		for (Note n : Notes.getInstance().getObservableList()) {
 			list.add(n);
-			Collections.sort(list);
 		}
 		
+		Collections.sort(list, NoteComparator.compareToKeywords());
 		Notes.getInstance().setListToObserve(list);
-		
+
+
 		for (Note n : Notes.getInstance().getObservableList()) {
 			try {
 
@@ -156,25 +181,49 @@ public class Controller implements Initializable {
 			}
 		}
 
+		Notes.getInstance().getObservableList().addListener((ListChangeListener<Note>) change -> {
+			while (change.next()) {
+				for (Note remitem : change.getRemoved()) {
+					listNote.getChildren().remove(remitem.getId());
+				}
+				for (Note n : change.getAddedSubList()) {
+					try {
+
+						GridPane note = FXMLLoader.load(getClass().getResource("../view/PreviewNote.fxml"));
+
+						((Label) note.getChildren().get(1)).setText(n.getTexte());
+						((Label) note.getChildren().get(0)).setText(n.getTitle());
+						((Text) note.getChildren().get(2)).setText(Integer.toString(n.getId()));
+
+						n.getTexteProperty().bindBidirectional(((Label) note.getChildren().get(1)).textProperty());
+						n.getTitleProperty().bindBidirectional(((Label) note.getChildren().get(0)).textProperty());
+
+						listNote.getChildren().add(note);
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
+
+			}
+		});
 	}
 
 	@FXML
 	protected void orderByDate(ActionEvent event) {
 
-		ArrayList<Note> list = new ArrayList<Note>();
-
-		// Remove current displayed notes
 		listNote.getChildren().remove(0, listNote.getChildren().size());
 		
-
+		ArrayList<Note> list = new ArrayList<Note>();
+	
 		// Browse all notes
 		for (Note n : Notes.getInstance().getObservableList()) {
 			list.add(n);
-			Collections.sort(list);
 		}
 		
-		Notes.getInstance().setListToObserve(list);
-		
+		Collections.sort(list, NoteComparator.compareToDate());
+		Notes.getInstance().setListToObserve(list);		
+
+
 		for (Note n : Notes.getInstance().getObservableList()) {
 			try {
 
@@ -193,6 +242,31 @@ public class Controller implements Initializable {
 			}
 		}
 
+		Notes.getInstance().getObservableList().addListener((ListChangeListener<Note>) change -> {
+			while (change.next()) {
+				for (Note remitem : change.getRemoved()) {
+					listNote.getChildren().remove(remitem.getId());
+				}
+				for (Note n : change.getAddedSubList()) {
+					try {
+
+						GridPane note = FXMLLoader.load(getClass().getResource("../view/PreviewNote.fxml"));
+
+						((Label) note.getChildren().get(1)).setText(n.getTexte());
+						((Label) note.getChildren().get(0)).setText(n.getTitle());
+						((Text) note.getChildren().get(2)).setText(Integer.toString(n.getId()));
+
+						n.getTexteProperty().bindBidirectional(((Label) note.getChildren().get(1)).textProperty());
+						n.getTitleProperty().bindBidirectional(((Label) note.getChildren().get(0)).textProperty());
+
+						listNote.getChildren().add(note);
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
+
+			}
+		});
 	}
 
 	@FXML
@@ -245,6 +319,8 @@ public class Controller implements Initializable {
 				e.printStackTrace();
 			}
 		}
+		
+		
 	}
 
 	@Override

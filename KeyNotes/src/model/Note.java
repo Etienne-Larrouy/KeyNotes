@@ -9,7 +9,7 @@ import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-public class Note  implements Comparable<Note>{
+public class Note{
 	private StringProperty title = new SimpleStringProperty();
 	private StringProperty texte = new SimpleStringProperty();
 	private ArrayList<String> keywords = new ArrayList<String>();
@@ -79,9 +79,18 @@ public class Note  implements Comparable<Note>{
 		return this.observableListKeywords;
 	}
 
-	@Override
-	public int compareTo(Note o) {
+	public int compareToTitle(Note o) {
 		return this.getTitle().compareTo(o.getTitle());
 	}
+	
+	public int compareToDate(Note o) {
+		return this.getDate().compareTo(o.getDate());
+	}
+	
+	
+	public int compareToKeywords(Note o) {
+		return ((Integer) this.getKeywords().size()).compareTo((Integer)o.getKeywords().size());
+	}
+	
 
 }
