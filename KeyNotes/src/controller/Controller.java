@@ -65,13 +65,13 @@ public class Controller implements Initializable {
 
 	@FXML
 	//title
-	private RadioButton keywordsButton1;
+	private RadioButton keywordButton;
 
 	@FXML
-	private RadioButton keywordsButton;
+	private RadioButton titleButton;
 
 	@FXML
-	private RadioButton keywordsButton2;
+	private RadioButton dateButton;
 
 	@FXML
 	private HBox keywordsFilter;
@@ -97,7 +97,7 @@ public class Controller implements Initializable {
 
 	@FXML
 	protected void orderByTitle(ActionEvent event) {
-
+		
 		listNote.getChildren().remove(0, listNote.getChildren().size());
 
 		ArrayList<Note> list = new ArrayList<Note>();
@@ -109,7 +109,6 @@ public class Controller implements Initializable {
 
 		Collections.sort(list, NoteComparator.compareToTitle());
 		Notes.getInstance().setListToObserve(list);
-
 
 		for (Note n : Notes.getInstance().getObservableList()) {
 			try {
@@ -307,55 +306,77 @@ public class Controller implements Initializable {
 
 	@FXML
 	protected void handleSearch(ActionEvent event) {
-		ArrayList<Note> list = new ArrayList<Note>();
 
-		// Remove current displayed notes
-		if (!searchField.getText().isEmpty()
-				&& (keywordsSearch.isSelected() || titleSearch.isSelected() || noteSearch.isSelected())) {
-			listNote.getChildren().remove(0, listNote.getChildren().size());
+		if(searchField.getText().isEmpty()){
+			listNote.getChildren().remove(0, listNote.getChildren().size()); 
+			
+			for (Note n : Notes.getInstance().getObservableList()) {
+				try {
+
+					GridPane note = FXMLLoader.load(getClass().getResource("../view/PreviewNote.fxml"));
+
+					((Label) note.getChildren().get(1)).setText(n.getTexte());
+					((Label) note.getChildren().get(0)).setText(n.getTitle());
+					((Text) note.getChildren().get(2)).setText(Integer.toString(n.getId()));
+
+					n.getTexteProperty().bindBidirectional(((Label) note.getChildren().get(1)).textProperty());
+					n.getTitleProperty().bindBidirectional(((Label) note.getChildren().get(0)).textProperty());
+
+					listNote.getChildren().add(note);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
 		}
-		// Browse all notes
-		for (Note n : Notes.getInstance().getObservableList()) {
-			// Search depending on which search button is selected
-			if (keywordsSearch.isSelected()) {
-				for (String kw : n.getKeywords()) {
-					if (kw.contains(searchField.getText())) {
+		else{
+			ArrayList<Note> list = new ArrayList<Note>();
+
+			// Browse all notes
+			for (Note n : Notes.getInstance().getObservableList()) {
+				// Search depending on which search button is selected
+				if (keywordsSearch.isSelected()) {
+					for (String kw : n.getKeywords()) {
+						if (kw.contains(searchField.getText())) {
+							list.add(n);
+						}
+					}
+				}
+
+				if (titleSearch.isSelected()) {
+					if (n.getTitle().contains(searchField.getText())) {
+						list.add(n);
+					}
+				}
+
+				if (noteSearch.isSelected()) {
+					if (n.getTexte().contains(searchField.getText())) {
 						list.add(n);
 					}
 				}
 			}
 
-			if (titleSearch.isSelected()) {
-				if (n.getTitle().contains(searchField.getText())) {
-					list.add(n);
-				}
-			}
+			// Remove current displayed notes
+			if(!list.isEmpty() || ((keywordsSearch.isSelected() || titleSearch.isSelected() || noteSearch.isSelected())  && !searchField.getText().isEmpty()))
+				listNote.getChildren().remove(0, listNote.getChildren().size()); 
 
-			if (noteSearch.isSelected()) {
-				if (n.getTexte().contains(searchField.getText())) {
-					list.add(n);
+			for (Note n : list) {
+				try {
+
+					GridPane note = FXMLLoader.load(getClass().getResource("../view/PreviewNote.fxml"));
+
+					((Label) note.getChildren().get(1)).setText(n.getTexte());
+					((Label) note.getChildren().get(0)).setText(n.getTitle());
+					((Text) note.getChildren().get(2)).setText(Integer.toString(n.getId()));
+
+					n.getTexteProperty().bindBidirectional(((Label) note.getChildren().get(1)).textProperty());
+					n.getTitleProperty().bindBidirectional(((Label) note.getChildren().get(0)).textProperty());
+
+					listNote.getChildren().add(note);
+				} catch (IOException e) {
+					e.printStackTrace();
 				}
 			}
 		}
-
-		for (Note n : list) {
-			try {
-
-				GridPane note = FXMLLoader.load(getClass().getResource("../view/PreviewNote.fxml"));
-
-				((Label) note.getChildren().get(1)).setText(n.getTexte());
-				((Label) note.getChildren().get(0)).setText(n.getTitle());
-				((Text) note.getChildren().get(2)).setText(Integer.toString(n.getId()));
-
-				n.getTexteProperty().bindBidirectional(((Label) note.getChildren().get(1)).textProperty());
-				n.getTitleProperty().bindBidirectional(((Label) note.getChildren().get(0)).textProperty());
-
-				listNote.getChildren().add(note);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-
 
 	}
 
@@ -365,11 +386,11 @@ public class Controller implements Initializable {
 		// Radio button state
 		final ToggleGroup group = new ToggleGroup();
 
-		keywordsButton1.setToggleGroup(group);
+		keywordButton.setToggleGroup(group);
 
-		keywordsButton.setToggleGroup(group);
+		titleButton.setToggleGroup(group);
 
-		keywordsButton2.setToggleGroup(group);
+		dateButton.setToggleGroup(group);
 
 		for (Note n : Notes.getInstance().getObservableList()) {
 			try {
@@ -447,10 +468,10 @@ public class Controller implements Initializable {
 						filterKeyword(change.getKey());
 					}
 				});
-				
+
 				keywordsFilter.getChildren().add(b);
 			}
-			
+
 			//Add the button linkedd to the added keyword
 			if (change.wasRemoved()) {
 				for(Node kw : keywordsFilter.getChildren()){

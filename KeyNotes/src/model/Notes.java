@@ -52,6 +52,7 @@ public class Notes{
 	}
 
 	public void removeNote(Note n) {
+		System.out.println("Remove");
 		observableListNotes.remove(n);
 	}
 

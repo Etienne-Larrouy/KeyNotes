@@ -44,8 +44,9 @@ public class ControllerNewNote {
 			int i = 0;
 			for(Node kw : keywords_container.getChildren()){
 				if(i>1){
-					n.addKeyword(((Label)(((HBox)kw).getChildren().get(0))).getText());
-					Notes.getInstance().getKeywords().addKeyword(((Label)(((HBox)kw).getChildren().get(0))).getText());
+					if(!n.getKeywords().contains(((Label)(((HBox)kw).getChildren().get(0))).getText())){
+						n.addKeyword(((Label)(((HBox)kw).getChildren().get(0))).getText());
+					}
 				}
 				i++;
 			}
