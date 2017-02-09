@@ -53,7 +53,7 @@ public class Notes{
 
 	public void removeNote(Note n) {
 		System.out.println("Remove");
-		n.getKeywords().removeAll(n.getKeywords());
+		n.getKeywords().clear();
 		observableListNotes.remove(n);
 	}
 

@@ -459,6 +459,7 @@ public class Controller implements Initializable {
 		Notes.getInstance().getKeywords().getObservableMap().addListener((MapChangeListener<String, Integer>) change -> {
 			//Remove the button linked to the removed keyword
 			if (change.wasAdded()) {
+				System.out.println("lol Add");
 				Button b = new Button(change.getKey());
 
 				b.setOnAction(new EventHandler<ActionEvent>() {
@@ -470,10 +471,11 @@ public class Controller implements Initializable {
 
 				keywordsFilter.getChildren().add(b);
 			}
-
+			System.out.println("lol");
 			//Add the button linked to the added keyword
 			if (change.wasRemoved()) {
-				if(change.getValueRemoved() <=0){
+				
+				if(change.getValueRemoved() <=1){
 					for(Node kw : keywordsFilter.getChildren()){
 						if(((Button)kw).getText().equals(change.getKey())){
 							keywordsFilter.getChildren().remove(kw);
