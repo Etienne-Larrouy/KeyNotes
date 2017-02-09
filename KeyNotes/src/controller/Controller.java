@@ -113,14 +113,14 @@ public class Controller implements Initializable {
 		for (Note n : Notes.getInstance().getObservableList()) {
 			try {
 
-				GridPane note = FXMLLoader.load(getClass().getResource("../view/PreviewNote.fxml"));
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/PreviewNote.fxml"));
 
-				((Label) note.getChildren().get(1)).setText(n.getTexte());
-				((Label) note.getChildren().get(0)).setText(n.getTitle());
-				((Text) note.getChildren().get(2)).setText(Integer.toString(n.getId()));
 
-				n.getTexteProperty().bindBidirectional(((Label) note.getChildren().get(1)).textProperty());
-				n.getTitleProperty().bindBidirectional(((Label) note.getChildren().get(0)).textProperty());
+				ControllerPreviewNote controller = new ControllerPreviewNote(n);
+				// Set it in the FXMLLoader
+				loader.setController(controller);
+				
+				GridPane note = loader.load();
 
 				listNote.getChildren().add(note);
 			} catch (IOException e) {
@@ -136,14 +136,14 @@ public class Controller implements Initializable {
 				for (Note n : change.getAddedSubList()) {
 					try {
 
-						GridPane note = FXMLLoader.load(getClass().getResource("../view/PreviewNote.fxml"));
+						FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/PreviewNote.fxml"));
 
-						((Label) note.getChildren().get(1)).setText(n.getTexte());
-						((Label) note.getChildren().get(0)).setText(n.getTitle());
-						((Text) note.getChildren().get(2)).setText(Integer.toString(n.getId()));
 
-						n.getTexteProperty().bindBidirectional(((Label) note.getChildren().get(1)).textProperty());
-						n.getTitleProperty().bindBidirectional(((Label) note.getChildren().get(0)).textProperty());
+						ControllerPreviewNote controller = new ControllerPreviewNote(n);
+						// Set it in the FXMLLoader
+						loader.setController(controller);
+						
+						GridPane note = loader.load();
 
 						listNote.getChildren().add(note);
 					} catch (IOException e) {
@@ -174,14 +174,14 @@ public class Controller implements Initializable {
 		for (Note n : Notes.getInstance().getObservableList()) {
 			try {
 
-				GridPane note = FXMLLoader.load(getClass().getResource("../view/PreviewNote.fxml"));
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/PreviewNote.fxml"));
 
-				((Label) note.getChildren().get(1)).setText(n.getTexte());
-				((Label) note.getChildren().get(0)).setText(n.getTitle());
-				((Text) note.getChildren().get(2)).setText(Integer.toString(n.getId()));
 
-				n.getTexteProperty().bindBidirectional(((Label) note.getChildren().get(1)).textProperty());
-				n.getTitleProperty().bindBidirectional(((Label) note.getChildren().get(0)).textProperty());
+				ControllerPreviewNote controller = new ControllerPreviewNote(n);
+				// Set it in the FXMLLoader
+				loader.setController(controller);
+				
+				GridPane note = loader.load();
 
 				listNote.getChildren().add(note);
 			} catch (IOException e) {
@@ -196,15 +196,14 @@ public class Controller implements Initializable {
 				}
 				for (Note n : change.getAddedSubList()) {
 					try {
+						FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/PreviewNote.fxml"));
 
-						GridPane note = FXMLLoader.load(getClass().getResource("../view/PreviewNote.fxml"));
 
-						((Label) note.getChildren().get(1)).setText(n.getTexte());
-						((Label) note.getChildren().get(0)).setText(n.getTitle());
-						((Text) note.getChildren().get(2)).setText(Integer.toString(n.getId()));
-
-						n.getTexteProperty().bindBidirectional(((Label) note.getChildren().get(1)).textProperty());
-						n.getTitleProperty().bindBidirectional(((Label) note.getChildren().get(0)).textProperty());
+						ControllerPreviewNote controller = new ControllerPreviewNote(n);
+						// Set it in the FXMLLoader
+						loader.setController(controller);
+						
+						GridPane note = loader.load();
 
 						listNote.getChildren().add(note);
 					} catch (IOException e) {
@@ -224,14 +223,14 @@ public class Controller implements Initializable {
 				for (Note n : change.getAddedSubList()) {
 					try {
 
-						GridPane note = FXMLLoader.load(getClass().getResource("../view/PreviewNote.fxml"));
+						FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/PreviewNote.fxml"));
 
-						((Label) note.getChildren().get(1)).setText(n.getTexte());
-						((Label) note.getChildren().get(0)).setText(n.getTitle());
-						((Text) note.getChildren().get(2)).setText(Integer.toString(n.getId()));
 
-						n.getTexteProperty().bindBidirectional(((Label) note.getChildren().get(1)).textProperty());
-						n.getTitleProperty().bindBidirectional(((Label) note.getChildren().get(0)).textProperty());
+						ControllerPreviewNote controller = new ControllerPreviewNote(n);
+						// Set it in the FXMLLoader
+						loader.setController(controller);
+						
+						GridPane note = loader.load();
 
 						listNote.getChildren().add(note);
 					} catch (IOException e) {
@@ -262,14 +261,14 @@ public class Controller implements Initializable {
 		for (Note n : Notes.getInstance().getObservableList()) {
 			try {
 
-				GridPane note = FXMLLoader.load(getClass().getResource("../view/PreviewNote.fxml"));
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/PreviewNote.fxml"));
 
-				((Label) note.getChildren().get(1)).setText(n.getTexte());
-				((Label) note.getChildren().get(0)).setText(n.getTitle());
-				((Text) note.getChildren().get(2)).setText(Integer.toString(n.getId()));
 
-				n.getTexteProperty().bindBidirectional(((Label) note.getChildren().get(1)).textProperty());
-				n.getTitleProperty().bindBidirectional(((Label) note.getChildren().get(0)).textProperty());
+				ControllerPreviewNote controller = new ControllerPreviewNote(n);
+				// Set it in the FXMLLoader
+				loader.setController(controller);
+				
+				GridPane note = loader.load();
 
 				listNote.getChildren().add(note);
 			} catch (IOException e) {
@@ -285,14 +284,14 @@ public class Controller implements Initializable {
 				for (Note n : change.getAddedSubList()) {
 					try {
 
-						GridPane note = FXMLLoader.load(getClass().getResource("../view/PreviewNote.fxml"));
+						FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/PreviewNote.fxml"));
 
-						((Label) note.getChildren().get(1)).setText(n.getTexte());
-						((Label) note.getChildren().get(0)).setText(n.getTitle());
-						((Text) note.getChildren().get(2)).setText(Integer.toString(n.getId()));
 
-						n.getTexteProperty().bindBidirectional(((Label) note.getChildren().get(1)).textProperty());
-						n.getTitleProperty().bindBidirectional(((Label) note.getChildren().get(0)).textProperty());
+						ControllerPreviewNote controller = new ControllerPreviewNote(n);
+						// Set it in the FXMLLoader
+						loader.setController(controller);
+						
+						GridPane note = loader.load();
 
 						listNote.getChildren().add(note);
 					} catch (IOException e) {
@@ -313,14 +312,14 @@ public class Controller implements Initializable {
 			for (Note n : Notes.getInstance().getObservableList()) {
 				try {
 
-					GridPane note = FXMLLoader.load(getClass().getResource("../view/PreviewNote.fxml"));
+					FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/PreviewNote.fxml"));
 
-					((Label) note.getChildren().get(1)).setText(n.getTexte());
-					((Label) note.getChildren().get(0)).setText(n.getTitle());
-					((Text) note.getChildren().get(2)).setText(Integer.toString(n.getId()));
 
-					n.getTexteProperty().bindBidirectional(((Label) note.getChildren().get(1)).textProperty());
-					n.getTitleProperty().bindBidirectional(((Label) note.getChildren().get(0)).textProperty());
+					ControllerPreviewNote controller = new ControllerPreviewNote(n);
+					// Set it in the FXMLLoader
+					loader.setController(controller);
+					
+					GridPane note = loader.load();
 
 					listNote.getChildren().add(note);
 				} catch (IOException e) {
@@ -395,14 +394,14 @@ public class Controller implements Initializable {
 		for (Note n : Notes.getInstance().getObservableList()) {
 			try {
 
-				GridPane note = FXMLLoader.load(getClass().getResource("../view/PreviewNote.fxml"));
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/PreviewNote.fxml"));
 
-				((Label) note.getChildren().get(1)).setText(n.getTexte());
-				((Label) note.getChildren().get(0)).setText(n.getTitle());
-				((Text) note.getChildren().get(2)).setText(Integer.toString(n.getId()));
 
-				n.getTexteProperty().bindBidirectional(((Label) note.getChildren().get(1)).textProperty());
-				n.getTitleProperty().bindBidirectional(((Label) note.getChildren().get(0)).textProperty());
+				ControllerPreviewNote controller = new ControllerPreviewNote(n);
+				// Set it in the FXMLLoader
+				loader.setController(controller);
+				
+				GridPane note = loader.load();
 
 				listNote.getChildren().add(note);
 			} catch (IOException e) {
@@ -419,14 +418,14 @@ public class Controller implements Initializable {
 				for (Note n : change.getAddedSubList()) {
 					try {
 
-						GridPane note = FXMLLoader.load(getClass().getResource("../view/PreviewNote.fxml"));
+						FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/PreviewNote.fxml"));
 
-						((Label) note.getChildren().get(1)).setText(n.getTexte());
-						((Label) note.getChildren().get(0)).setText(n.getTitle());
-						((Text) note.getChildren().get(2)).setText(Integer.toString(n.getId()));
 
-						n.getTexteProperty().bindBidirectional(((Label) note.getChildren().get(1)).textProperty());
-						n.getTitleProperty().bindBidirectional(((Label) note.getChildren().get(0)).textProperty());
+						ControllerPreviewNote controller = new ControllerPreviewNote(n);
+						// Set it in the FXMLLoader
+						loader.setController(controller);
+						
+						GridPane note = loader.load();
 
 						listNote.getChildren().add(note);
 					} catch (IOException e) {
@@ -472,11 +471,13 @@ public class Controller implements Initializable {
 				keywordsFilter.getChildren().add(b);
 			}
 
-			//Add the button linkedd to the added keyword
+			//Add the button linked to the added keyword
 			if (change.wasRemoved()) {
-				for(Node kw : keywordsFilter.getChildren()){
-					if(((Button)kw).getText().equals(change.getKey())){
-						keywordsFilter.getChildren().remove(kw);
+				if(change.getValueRemoved() <=0){
+					for(Node kw : keywordsFilter.getChildren()){
+						if(((Button)kw).getText().equals(change.getKey())){
+							keywordsFilter.getChildren().remove(kw);
+						}
 					}
 				}
 			}
@@ -485,8 +486,34 @@ public class Controller implements Initializable {
 	}
 
 	protected void filterKeyword(String key) {
-		// TODO Auto-generated method stub
-		System.out.println("lol");
+		listNote.getChildren().remove(0, listNote.getChildren().size());
+
+		ArrayList<Note> list = new ArrayList<Note>();
+		// Browse all notes
+		for (Note n : Notes.getInstance().getObservableList()) {
+			for(String kw : n.getKeywords()){
+				if(key.equals(kw)){
+					list.add(n);
+				}
+			}
+		}
+
+		for (Note n :list) {
+			try {
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/PreviewNote.fxml"));
+
+
+				ControllerPreviewNote controller = new ControllerPreviewNote(n);
+				// Set it in the FXMLLoader
+				loader.setController(controller);
+				
+				GridPane note = loader.load();
+
+				listNote.getChildren().add(note);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
 }
