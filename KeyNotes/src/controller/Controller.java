@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.ResourceBundle;
 
@@ -484,14 +485,15 @@ public class Controller implements Initializable {
 	
 			//Add the button linked to the added keyword
 			else {
-
+				
 				if(change.getValueRemoved() <=1){
-					
-//					for(Node kw : keywordsFilter.getChildren()){
-//						if(((Button)kw).getText().equals(change.getKey())){
-//							keywordsFilter.getChildren().remove(kw);
-//						}
-//					}
+					Iterator<Node> iter = keywordsFilter.getChildren().iterator();
+					while(iter.hasNext()){
+						Node kw = iter.next();
+						if(((Button)kw).getText().equals(change.getKey())){
+							iter.remove();
+						}
+					}
 				}
 			}
 
