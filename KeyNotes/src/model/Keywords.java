@@ -27,7 +27,6 @@ public class Keywords {
 		if(this.observableMap.containsKey(kw)){
 			int nb = this.observableMap.get(kw);
 			this.observableMap.put(kw, nb+1);
-			
 		}
 		else{
 			this.observableMap.put(kw, 1);

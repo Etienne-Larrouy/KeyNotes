@@ -65,7 +65,7 @@ public class Controller implements Initializable {
 	private FlowPane listNote;
 
 	@FXML
-	//title
+	// title
 	private RadioButton keywordButton;
 
 	@FXML
@@ -90,7 +90,7 @@ public class Controller implements Initializable {
 			stage.setScene(scene);
 			stage.show();
 		} catch (IOException e) {
-	
+
 			e.printStackTrace();
 		}
 
@@ -98,7 +98,7 @@ public class Controller implements Initializable {
 
 	@FXML
 	protected void orderByTitle(ActionEvent event) {
-		
+
 		listNote.getChildren().remove(0, listNote.getChildren().size());
 
 		ArrayList<Note> list = new ArrayList<Note>();
@@ -116,11 +116,10 @@ public class Controller implements Initializable {
 
 				FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/PreviewNote.fxml"));
 
-
 				ControllerPreviewNote controller = new ControllerPreviewNote(n);
 				// Set it in the FXMLLoader
 				loader.setController(controller);
-				
+
 				GridPane note = loader.load();
 
 				n.setContainer(note);
@@ -140,11 +139,10 @@ public class Controller implements Initializable {
 
 						FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/PreviewNote.fxml"));
 
-
 						ControllerPreviewNote controller = new ControllerPreviewNote(n);
 						// Set it in the FXMLLoader
 						loader.setController(controller);
-						
+
 						GridPane note = loader.load();
 
 						n.setContainer(note);
@@ -173,17 +171,15 @@ public class Controller implements Initializable {
 		Collections.sort(list, NoteComparator.compareToKeywords());
 		Notes.getInstance().setListToObserve(list);
 
-
 		for (Note n : Notes.getInstance().getObservableList()) {
 			try {
 
 				FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/PreviewNote.fxml"));
 
-
 				ControllerPreviewNote controller = new ControllerPreviewNote(n);
 				// Set it in the FXMLLoader
 				loader.setController(controller);
-				
+
 				GridPane note = loader.load();
 
 				n.setContainer(note);
@@ -202,11 +198,10 @@ public class Controller implements Initializable {
 					try {
 						FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/PreviewNote.fxml"));
 
-
 						ControllerPreviewNote controller = new ControllerPreviewNote(n);
 						// Set it in the FXMLLoader
 						loader.setController(controller);
-						
+
 						GridPane note = loader.load();
 
 						n.setContainer(note);
@@ -219,7 +214,6 @@ public class Controller implements Initializable {
 			}
 		});
 
-
 		Notes.getInstance().getObservableList().addListener((ListChangeListener<Note>) change -> {
 			while (change.next()) {
 				for (Note remitem : change.getRemoved()) {
@@ -230,11 +224,10 @@ public class Controller implements Initializable {
 
 						FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/PreviewNote.fxml"));
 
-
 						ControllerPreviewNote controller = new ControllerPreviewNote(n);
 						// Set it in the FXMLLoader
 						loader.setController(controller);
-						
+
 						GridPane note = loader.load();
 
 						n.setContainer(note);
@@ -261,19 +254,17 @@ public class Controller implements Initializable {
 		}
 
 		Collections.sort(list, NoteComparator.compareToDate());
-		Notes.getInstance().setListToObserve(list);		
-
+		Notes.getInstance().setListToObserve(list);
 
 		for (Note n : Notes.getInstance().getObservableList()) {
 			try {
 
 				FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/PreviewNote.fxml"));
 
-
 				ControllerPreviewNote controller = new ControllerPreviewNote(n);
 				// Set it in the FXMLLoader
 				loader.setController(controller);
-				
+
 				GridPane note = loader.load();
 
 				n.setContainer(note);
@@ -293,11 +284,10 @@ public class Controller implements Initializable {
 
 						FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/PreviewNote.fxml"));
 
-
 						ControllerPreviewNote controller = new ControllerPreviewNote(n);
 						// Set it in the FXMLLoader
 						loader.setController(controller);
-						
+
 						GridPane note = loader.load();
 
 						n.setContainer(note);
@@ -314,19 +304,18 @@ public class Controller implements Initializable {
 	@FXML
 	protected void handleSearch(ActionEvent event) {
 
-		if(searchField.getText().isEmpty()){
-			listNote.getChildren().remove(0, listNote.getChildren().size()); 
-			
+		if (searchField.getText().isEmpty()) {
+			listNote.getChildren().remove(0, listNote.getChildren().size());
+
 			for (Note n : Notes.getInstance().getObservableList()) {
 				try {
 
 					FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/PreviewNote.fxml"));
 
-
 					ControllerPreviewNote controller = new ControllerPreviewNote(n);
 					// Set it in the FXMLLoader
 					loader.setController(controller);
-					
+
 					GridPane note = loader.load();
 
 					n.setContainer(note);
@@ -335,8 +324,7 @@ public class Controller implements Initializable {
 					e.printStackTrace();
 				}
 			}
-		}
-		else{
+		} else {
 			ArrayList<Note> list = new ArrayList<Note>();
 
 			// Browse all notes
@@ -364,18 +352,18 @@ public class Controller implements Initializable {
 			}
 
 			// Remove current displayed notes
-			if(!list.isEmpty() || ((keywordsSearch.isSelected() || titleSearch.isSelected() || noteSearch.isSelected())  && !searchField.getText().isEmpty()))
-				listNote.getChildren().remove(0, listNote.getChildren().size()); 
+			if (!list.isEmpty() || ((keywordsSearch.isSelected() || titleSearch.isSelected() || noteSearch.isSelected())
+					&& !searchField.getText().isEmpty()))
+				listNote.getChildren().remove(0, listNote.getChildren().size());
 
 			for (Note n : list) {
 				try {
 					FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/PreviewNote.fxml"));
 
-
 					ControllerPreviewNote controller = new ControllerPreviewNote(n);
 					// Set it in the FXMLLoader
 					loader.setController(controller);
-					
+
 					GridPane note = loader.load();
 
 					n.setContainer(note);
@@ -405,11 +393,10 @@ public class Controller implements Initializable {
 
 				FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/PreviewNote.fxml"));
 
-
 				ControllerPreviewNote controller = new ControllerPreviewNote(n);
 				// Set it in the FXMLLoader
 				loader.setController(controller);
-				
+
 				GridPane note = loader.load();
 
 				n.setContainer(note);
@@ -419,7 +406,7 @@ public class Controller implements Initializable {
 			}
 		}
 
-		// Add listener to observable list of notes  
+		// Add listener to observable list of notes
 		Notes.getInstance().getObservableList().addListener((ListChangeListener<Note>) change -> {
 			while (change.next()) {
 				for (Note remitem : change.getRemoved()) {
@@ -430,11 +417,10 @@ public class Controller implements Initializable {
 
 						FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/PreviewNote.fxml"));
 
-
 						ControllerPreviewNote controller = new ControllerPreviewNote(n);
 						// Set it in the FXMLLoader
 						loader.setController(controller);
-						
+
 						GridPane note = loader.load();
 
 						n.setContainer(note);
@@ -449,7 +435,7 @@ public class Controller implements Initializable {
 
 		int i = 0;
 		// Display 10 most used keywords
-		for (Map.Entry<String, Integer> entry  :  Notes.getInstance().getKeywords().getObservableMap().entrySet()) {
+		for (Map.Entry<String, Integer> entry : Notes.getInstance().getKeywords().getObservableMap().entrySet()) {
 			Button b = new Button(entry.getKey());
 
 			b.setOnAction(new EventHandler<ActionEvent>() {
@@ -462,15 +448,16 @@ public class Controller implements Initializable {
 			keywordsFilter.getChildren().add(b);
 			i++;
 
-			if(i>=9)
+			if (i >= 9)
 				break;
 		}
 
-		// Add listener to observable list of used keywords  
-		Notes.getInstance().getKeywords().getObservableMap().addListener((MapChangeListener<String, Integer>) change -> {
-			//Remove the button linked to the removed keyword
+		// Add listener to observable list of used keywords
+		Notes.getInstance().getKeywords().getObservableMap()
+		.addListener((MapChangeListener<String, Integer>) change -> {
+			// Remove the button linked to the removed keyword
 			if (change.wasAdded()) {
-				
+
 				Button b = new Button(change.getKey());
 
 				b.setOnAction(new EventHandler<ActionEvent>() {
@@ -480,17 +467,29 @@ public class Controller implements Initializable {
 					}
 				});
 
-				keywordsFilter.getChildren().add(b);
+				boolean exist = false;
+				Iterator<Node> iter = keywordsFilter.getChildren().iterator();
+				while (iter.hasNext() && !exist) {
+					Node kw = iter.next();
+					if (((Button) kw).getText().equals(change.getKey())) {
+						exist =true;
+					}
+				}
+
+				if(!exist)
+					keywordsFilter.getChildren().add(b);
+
 			}
-	
-			//Add the button linked to the added keyword
+
+
+			// Add the button linked to the added keyword
 			else {
-				
-				if(change.getValueRemoved() <=1){
+
+				if (change.getValueRemoved() <= 1) {
 					Iterator<Node> iter = keywordsFilter.getChildren().iterator();
-					while(iter.hasNext()){
+					while (iter.hasNext()) {
 						Node kw = iter.next();
-						if(((Button)kw).getText().equals(change.getKey())){
+						if (((Button) kw).getText().equals(change.getKey())) {
 							iter.remove();
 						}
 					}
@@ -506,22 +505,21 @@ public class Controller implements Initializable {
 		ArrayList<Note> list = new ArrayList<Note>();
 		// Browse all notes
 		for (Note n : Notes.getInstance().getObservableList()) {
-			for(String kw : n.getKeywords()){
-				if(key.equals(kw)){
+			for (String kw : n.getKeywords()) {
+				if (key.equals(kw)) {
 					list.add(n);
 				}
 			}
 		}
 
-		for (Note n :list) {
+		for (Note n : list) {
 			try {
 				FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/PreviewNote.fxml"));
-
 
 				ControllerPreviewNote controller = new ControllerPreviewNote(n);
 				// Set it in the FXMLLoader
 				loader.setController(controller);
-				
+
 				GridPane note = loader.load();
 
 				n.setContainer(note);
