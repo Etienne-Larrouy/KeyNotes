@@ -483,13 +483,15 @@ public class Controller implements Initializable {
 			}
 	
 			//Add the button linked to the added keyword
-			if (change.wasRemoved()) {
+			else {
+
 				if(change.getValueRemoved() <=1){
-					for(Node kw : keywordsFilter.getChildren()){
-						if(((Button)kw).getText().equals(change.getKey())){
-							keywordsFilter.getChildren().remove(kw);
-						}
-					}
+					
+//					for(Node kw : keywordsFilter.getChildren()){
+//						if(((Button)kw).getText().equals(change.getKey())){
+//							keywordsFilter.getChildren().remove(kw);
+//						}
+//					}
 				}
 			}
 
