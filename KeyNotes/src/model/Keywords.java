@@ -25,7 +25,6 @@ public class Keywords {
 	public void addKeyword(String kw) {
 		
 		if(this.observableMap.containsKey(kw)){
-
 			int nb = this.observableMap.get(kw);
 			this.observableMap.put(kw, nb+1);
 			

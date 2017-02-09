@@ -38,7 +38,7 @@ public class ControllerNewNote {
 		} else if (content.getText().isEmpty()) {
 			statusbar.setText("Content cannot be empty");
 		} else {
-			Note n = new Note(title.getText(), content.getText(), Notes.getInstance().getObservableList().size());
+			Note n = new Note(title.getText(), content.getText());
 			Notes.getInstance().addNote(n);
 			
 			int i = 0;

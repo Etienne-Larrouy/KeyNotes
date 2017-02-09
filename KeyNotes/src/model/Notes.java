@@ -16,8 +16,7 @@ public class Notes{
 	ObservableList<Note> observableListNotes;
 
 	private static Notes notesInstance = new Notes(new Note("Titre de la note",
-			"Quo cognito Constantius ultra mortalem modum exarsit ac nequo casu idem Gallus de futuris incertus agitare quaedam conducentia saluti suae per itinera conaretur, remoti sunt omnes de industria milites agentes in civitatibus perviis.",
-			0));
+			"Quo cognito Constantius ultra mortalem modum exarsit ac nequo casu idem Gallus de futuris incertus agitare quaedam conducentia saluti suae per itinera conaretur, remoti sunt omnes de industria milites agentes in civitatibus perviis."));
 
 	public static Notes getInstance() {
 		return notesInstance;
@@ -53,7 +52,7 @@ public class Notes{
 
 	public void removeNote(Note n) {
 		System.out.println("Remove");
-		n.getKeywords().clear();
+		n.getObservableListKeywords().clear();
 		observableListNotes.remove(n);
 	}
 

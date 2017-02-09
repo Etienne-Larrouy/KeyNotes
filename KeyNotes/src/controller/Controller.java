@@ -89,7 +89,7 @@ public class Controller implements Initializable {
 			stage.setScene(scene);
 			stage.show();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+	
 			e.printStackTrace();
 		}
 
@@ -122,6 +122,7 @@ public class Controller implements Initializable {
 				
 				GridPane note = loader.load();
 
+				n.setContainer(note);
 				listNote.getChildren().add(note);
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -131,7 +132,7 @@ public class Controller implements Initializable {
 		Notes.getInstance().getObservableList().addListener((ListChangeListener<Note>) change -> {
 			while (change.next()) {
 				for (Note remitem : change.getRemoved()) {
-					listNote.getChildren().remove(remitem.getId());
+					listNote.getChildren().remove(remitem.getContainer());
 				}
 				for (Note n : change.getAddedSubList()) {
 					try {
@@ -145,6 +146,7 @@ public class Controller implements Initializable {
 						
 						GridPane note = loader.load();
 
+						n.setContainer(note);
 						listNote.getChildren().add(note);
 					} catch (IOException e) {
 						e.printStackTrace();
@@ -183,6 +185,7 @@ public class Controller implements Initializable {
 				
 				GridPane note = loader.load();
 
+				n.setContainer(note);
 				listNote.getChildren().add(note);
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -192,7 +195,7 @@ public class Controller implements Initializable {
 		Notes.getInstance().getObservableList().addListener((ListChangeListener<Note>) change -> {
 			while (change.next()) {
 				for (Note remitem : change.getRemoved()) {
-					listNote.getChildren().remove(remitem.getId());
+					listNote.getChildren().remove(remitem.getContainer());
 				}
 				for (Note n : change.getAddedSubList()) {
 					try {
@@ -205,6 +208,7 @@ public class Controller implements Initializable {
 						
 						GridPane note = loader.load();
 
+						n.setContainer(note);
 						listNote.getChildren().add(note);
 					} catch (IOException e) {
 						e.printStackTrace();
@@ -218,7 +222,7 @@ public class Controller implements Initializable {
 		Notes.getInstance().getObservableList().addListener((ListChangeListener<Note>) change -> {
 			while (change.next()) {
 				for (Note remitem : change.getRemoved()) {
-					listNote.getChildren().remove(remitem.getId());
+					listNote.getChildren().remove(remitem.getContainer());
 				}
 				for (Note n : change.getAddedSubList()) {
 					try {
@@ -232,6 +236,7 @@ public class Controller implements Initializable {
 						
 						GridPane note = loader.load();
 
+						n.setContainer(note);
 						listNote.getChildren().add(note);
 					} catch (IOException e) {
 						e.printStackTrace();
@@ -270,6 +275,7 @@ public class Controller implements Initializable {
 				
 				GridPane note = loader.load();
 
+				n.setContainer(note);
 				listNote.getChildren().add(note);
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -279,7 +285,7 @@ public class Controller implements Initializable {
 		Notes.getInstance().getObservableList().addListener((ListChangeListener<Note>) change -> {
 			while (change.next()) {
 				for (Note remitem : change.getRemoved()) {
-					listNote.getChildren().remove(remitem.getId());
+					listNote.getChildren().remove(remitem.getContainer());
 				}
 				for (Note n : change.getAddedSubList()) {
 					try {
@@ -293,6 +299,7 @@ public class Controller implements Initializable {
 						
 						GridPane note = loader.load();
 
+						n.setContainer(note);
 						listNote.getChildren().add(note);
 					} catch (IOException e) {
 						e.printStackTrace();
@@ -321,6 +328,7 @@ public class Controller implements Initializable {
 					
 					GridPane note = loader.load();
 
+					n.setContainer(note);
 					listNote.getChildren().add(note);
 				} catch (IOException e) {
 					e.printStackTrace();
@@ -360,16 +368,16 @@ public class Controller implements Initializable {
 
 			for (Note n : list) {
 				try {
+					FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/PreviewNote.fxml"));
 
-					GridPane note = FXMLLoader.load(getClass().getResource("../view/PreviewNote.fxml"));
 
-					((Label) note.getChildren().get(1)).setText(n.getTexte());
-					((Label) note.getChildren().get(0)).setText(n.getTitle());
-					((Text) note.getChildren().get(2)).setText(Integer.toString(n.getId()));
+					ControllerPreviewNote controller = new ControllerPreviewNote(n);
+					// Set it in the FXMLLoader
+					loader.setController(controller);
+					
+					GridPane note = loader.load();
 
-					n.getTexteProperty().bindBidirectional(((Label) note.getChildren().get(1)).textProperty());
-					n.getTitleProperty().bindBidirectional(((Label) note.getChildren().get(0)).textProperty());
-
+					n.setContainer(note);
 					listNote.getChildren().add(note);
 				} catch (IOException e) {
 					e.printStackTrace();
@@ -403,6 +411,7 @@ public class Controller implements Initializable {
 				
 				GridPane note = loader.load();
 
+				n.setContainer(note);
 				listNote.getChildren().add(note);
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -413,7 +422,7 @@ public class Controller implements Initializable {
 		Notes.getInstance().getObservableList().addListener((ListChangeListener<Note>) change -> {
 			while (change.next()) {
 				for (Note remitem : change.getRemoved()) {
-					listNote.getChildren().remove(remitem.getId());
+					listNote.getChildren().remove(remitem.getContainer());
 				}
 				for (Note n : change.getAddedSubList()) {
 					try {
@@ -427,6 +436,7 @@ public class Controller implements Initializable {
 						
 						GridPane note = loader.load();
 
+						n.setContainer(note);
 						listNote.getChildren().add(note);
 					} catch (IOException e) {
 						e.printStackTrace();
@@ -459,7 +469,7 @@ public class Controller implements Initializable {
 		Notes.getInstance().getKeywords().getObservableMap().addListener((MapChangeListener<String, Integer>) change -> {
 			//Remove the button linked to the removed keyword
 			if (change.wasAdded()) {
-				System.out.println("lol Add");
+				
 				Button b = new Button(change.getKey());
 
 				b.setOnAction(new EventHandler<ActionEvent>() {
@@ -471,10 +481,9 @@ public class Controller implements Initializable {
 
 				keywordsFilter.getChildren().add(b);
 			}
-			System.out.println("lol");
+	
 			//Add the button linked to the added keyword
 			if (change.wasRemoved()) {
-				
 				if(change.getValueRemoved() <=1){
 					for(Node kw : keywordsFilter.getChildren()){
 						if(((Button)kw).getText().equals(change.getKey())){
@@ -511,6 +520,7 @@ public class Controller implements Initializable {
 				
 				GridPane note = loader.load();
 
+				n.setContainer(note);
 				listNote.getChildren().add(note);
 			} catch (IOException e) {
 				e.printStackTrace();

@@ -90,7 +90,7 @@ public class ControllerEditNote implements Initializable{
 			}
 			
 			for(String kw : removedKeywords){
-				Notes.getInstance().getKeywords().removeKeyword(kw);
+				this.currentNote.removeKeyword(kw);
 			}
 
 		}

@@ -7,24 +7,34 @@ import java.util.Date;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
+import javafx.scene.layout.GridPane;
 
 public class Note{
 	private StringProperty title = new SimpleStringProperty();
 	private StringProperty texte = new SimpleStringProperty();
 	private ArrayList<String> keywords = new ArrayList<String>();
 	
-	ObservableList<String> observableListKeywords = FXCollections.observableList(keywords);
-	
-	private int id;
+	private ObservableList<String> observableListKeywords = FXCollections.observableList(keywords);
 	
 	private Date date;
+	private GridPane setContainer;
 	
-	public Note(String title, String texte, int id){
+	public Note(String title, String texte){
 		this.setTexte(texte);
 		this.setTitle(title);
-		this.id = id;
 		this.date = Calendar.getInstance().getTime();
+		
+		observableListKeywords.addListener((ListChangeListener<String>) change -> {
+			while(change.next()){
+                if (change.wasRemoved()) {
+                    for (String removedKeyword : change.getRemoved()) {
+                    	Notes.getInstance().getKeywords().removeKeyword(removedKeyword);
+                    }
+                }
+			}
+		});
 	}
 	
 	/* Getters and setters*/
@@ -33,13 +43,6 @@ public class Note{
 		return date;
 	}
 	
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
 	
 	public final String getTitle() {
 		return this.title.get();
@@ -91,6 +94,18 @@ public class Note{
 	
 	public int compareToKeywords(Note o) {
 		return ((Integer) this.getKeywords().size()).compareTo((Integer)o.getKeywords().size());
+	}
+
+	public void removeKeyword(String kw) {
+		this.observableListKeywords.remove(kw);
+	}
+
+	public void setContainer(GridPane note) {
+		this.setContainer = note;
+	}
+	
+	public GridPane getContainer() {
+		return this.setContainer;
 	}
 	
 
