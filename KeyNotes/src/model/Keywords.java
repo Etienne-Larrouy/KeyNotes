@@ -17,21 +17,35 @@ public class Keywords {
     //Constructor with multiple keywords
     public Keywords(String...kw){
     	for(int i = 0; i<kw.length;i++){
-    		this.addKeywords(kw[i]);
+    		this.addKeyword(kw[i]);
     	}
     }
     
     //Add keyword to the observable map
-	public void addKeywords(String kw) {
+	public void addKeyword(String kw) {
+		
 		if(this.observableMap.containsKey(kw)){
-			this.observableMap.put(kw, this.observableMap.get(kw)+1);
+			int nb = this.observableMap.get(kw);
+			this.observableMap.put(kw, nb+1);
 		}
 		else{
-			this.observableMap.put(kw, 0);
+			this.observableMap.put(kw, 1);
+		}
+	}
+	
+	  
+    //Remove keyword to the observable map
+	public void removeKeyword(String kw) {
+		if(this.observableMap.get(kw).intValue() > 1){
+			int nb = this.observableMap.get(kw);
+			this.observableMap.put(kw, nb-1);
+		}
+		else{
+			this.observableMap.remove(kw);
 		}
 	}
 
-	public ObservableMap<String, Integer> getObservableList() {
+	public ObservableMap<String, Integer> getObservableMap() {
 		return observableMap;
 	}
 

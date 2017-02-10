@@ -38,13 +38,16 @@ public class ControllerNewNote {
 		} else if (content.getText().isEmpty()) {
 			statusbar.setText("Content cannot be empty");
 		} else {
-			Note n = new Note(title.getText(), content.getText(), Notes.getInstance().getObservableList().size());
+			Note n = new Note(title.getText(), content.getText());
 			Notes.getInstance().addNote(n);
 			
 			int i = 0;
 			for(Node kw : keywords_container.getChildren()){
-				if(i>1)
-					n.addKeyword(((Label)(((HBox)kw).getChildren().get(0))).getText());
+				if(i>1){
+					if(!n.getKeywords().contains(((Label)(((HBox)kw).getChildren().get(0))).getText())){
+						n.addKeyword(((Label)(((HBox)kw).getChildren().get(0))).getText());
+					}
+				}
 				i++;
 			}
 			

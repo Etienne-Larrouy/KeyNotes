@@ -19,7 +19,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #EFF0E4;" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Controller">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #EFF0E4;" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Controller">
    <center>
       <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <content>
@@ -50,9 +50,9 @@
                      </padding></Label>
                   <ButtonBar prefHeight="40.0" prefWidth="200.0">
                     <buttons>
-                        <RadioButton fx:id="keywordsButton" mnemonicParsing="false" onAction="#orderByKeywords" text="Keywords" />
-                        <RadioButton fx:id="keywordsButton1" mnemonicParsing="false" onAction="#orderByKeywords" text="Title" />
-                        <RadioButton fx:id="keywordsButton2" mnemonicParsing="false" onAction="#orderByKeywords" text="Date" />
+                        <RadioButton fx:id="keywordButton" mnemonicParsing="false" onAction="#orderByKeywords" prefHeight="24.0" prefWidth="167.0" text="Keywords" />
+                        <RadioButton fx:id="titleButton" mnemonicParsing="false" onAction="#orderByTitle" text="Title" />
+                        <RadioButton fx:id="dateButton" mnemonicParsing="false" onAction="#orderByDate" selected="true" text="Date" />
                     </buttons>
                   </ButtonBar>
                </children>
@@ -100,14 +100,7 @@
       </GridPane>
    </top>
    <bottom>
-      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <children>
-            <Button mnemonicParsing="false" text="Course" />
-            <Button mnemonicParsing="false" text="Java" />
-            <Button mnemonicParsing="false" text="Programming" />
-            <Button mnemonicParsing="false" text="Systems" />
-         </children>
-      </HBox>
+      <HBox fx:id="keywordsFilter" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
    </bottom>
    <stylesheets>
       <URL value="@HeaderTheme.css" />

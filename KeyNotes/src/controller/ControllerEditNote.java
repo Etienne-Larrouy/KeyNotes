@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
@@ -23,6 +24,7 @@ import model.Note;
 
 public class ControllerEditNote implements Initializable{
 
+	private ArrayList<String> removedKeywords = new ArrayList<String>();
 	private Stage stage;
 	private Note currentNote;
 
@@ -55,6 +57,7 @@ public class ControllerEditNote implements Initializable{
 				@Override
 				public void handle(ActionEvent actionEvent) {
 					keywords_container.getChildren().remove(hbox);
+					
 				}
 			});
 
@@ -84,7 +87,10 @@ public class ControllerEditNote implements Initializable{
 				}
 				i++;
 			}
-
+			
+			for(String kw : removedKeywords){
+				this.currentNote.removeKeyword(kw);
+			}
 
 		}
 
@@ -124,6 +130,7 @@ public class ControllerEditNote implements Initializable{
 			b.setOnAction(new EventHandler<ActionEvent>() {
 				@Override
 				public void handle(ActionEvent actionEvent) {
+					removedKeywords.add(kw);
 					keywords_container.getChildren().remove(hbox);
 					currentNote.getObservableListKeywords().remove(kw);
 				}

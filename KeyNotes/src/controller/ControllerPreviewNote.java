@@ -1,20 +1,32 @@
 package controller;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import model.Notes;
+import model.Note;
 
-public class ControllerPreviewNote{
+public class ControllerPreviewNote implements Initializable {
 
 	@FXML
-	private Text NotePreview_id;
+	private Label NotePreview_title;
+
+	@FXML
+	private Label NotePreview_note;
+
+	private Note currentNote;
+
+	public ControllerPreviewNote(Note n) {
+		this.currentNote = n;
+	}
 
 	@FXML
 	public void openTask(MouseEvent event) throws IOException {
@@ -22,19 +34,22 @@ public class ControllerPreviewNote{
 		Parent root = null;
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/Note.fxml"));
 
-
-		ControllerNote controller = new ControllerNote(Notes.getInstance().getObservableList().get(Integer.parseInt(NotePreview_id.getText())));
+		ControllerNote controller = new ControllerNote(this.currentNote);
 		// Set it in the FXMLLoader
 		loader.setController(controller);
 
 		stage = new Stage();
 
-		root = (Parent)loader.load();
+		root = (Parent) loader.load();
 		Scene scene = new Scene(root);
 		stage.setScene(scene);
 		stage.show();
 	}
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+
+		this.NotePreview_title.textProperty().bind(this.currentNote.getTitleProperty());
+		this.NotePreview_note.textProperty().bind(this.currentNote.getTexteProperty());
+	}
 }
-
-
-
