@@ -472,15 +472,14 @@ public class Controller implements Initializable {
 				while (iter.hasNext() && !exist) {
 					Node kw = iter.next();
 					if (((Button) kw).getText().equals(change.getKey())) {
-						exist =true;
+						exist = true;
 					}
 				}
 
-				if(!exist)
+				if (!exist)
 					keywordsFilter.getChildren().add(b);
 
 			}
-
 
 			// Add the button linked to the added keyword
 			else {

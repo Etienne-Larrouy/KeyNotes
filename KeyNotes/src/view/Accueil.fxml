@@ -19,20 +19,20 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #EFF0E4;" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Controller">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #AAAAAA;" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Controller">
    <center>
       <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <content>
-            <FlowPane fx:id="listNote" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #E9E9E9;" />
+            <FlowPane fx:id="listNote" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #cccccc; -fx-border-color: #cccccc;" />
          </content>
       </ScrollPane>
    </center>
    <top>
       <GridPane prefHeight="112.0" prefWidth="594.0" style="-fx-background-color: #23282c;" BorderPane.alignment="CENTER">
         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="20.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="60.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="20.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="100.0" percentWidth="20.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="100.0" percentWidth="60.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="100.0" percentWidth="20.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
             <RowConstraints maxHeight="25.0" minHeight="8.0" prefHeight="8.0" vgrow="NEVER" />
@@ -48,11 +48,11 @@
                      <padding>
                         <Insets left="5.0" />
                      </padding></Label>
-                  <ButtonBar prefHeight="40.0" prefWidth="200.0">
+                  <ButtonBar prefHeight="35.0" prefWidth="326.0">
                     <buttons>
-                        <RadioButton fx:id="keywordButton" mnemonicParsing="false" onAction="#orderByKeywords" prefHeight="24.0" prefWidth="167.0" text="Keywords" />
-                        <RadioButton fx:id="titleButton" mnemonicParsing="false" onAction="#orderByTitle" text="Title" />
-                        <RadioButton fx:id="dateButton" mnemonicParsing="false" onAction="#orderByDate" selected="true" text="Date" />
+                        <RadioButton fx:id="keywordButton" mnemonicParsing="false" onAction="#orderByKeywords" prefHeight="24.0" prefWidth="680.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="Keywords" />
+                        <RadioButton fx:id="titleButton" mnemonicParsing="false" onAction="#orderByTitle" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="Title" />
+                        <RadioButton fx:id="dateButton" mnemonicParsing="false" onAction="#orderByDate" selected="true" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="Date" />
                     </buttons>
                   </ButtonBar>
                </children>
@@ -68,18 +68,21 @@
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                <children>
                   <Label maxHeight="1.7976931348623157E308" text="Search in :" />
-                  <ToggleButton fx:id="keywordsSearch" mnemonicParsing="false" style="-fx-background-color: black;" text="Keywords">
+                  <ToggleButton fx:id="keywordsSearch" minWidth="30" mnemonicParsing="false" style="-fx-background-color: black;" text="Keywords">
                      <HBox.margin>
                         <Insets left="5.0" right="5.0" />
-                     </HBox.margin></ToggleButton>
+                     </HBox.margin>
+                  </ToggleButton>
                   <ToggleButton fx:id="titleSearch" mnemonicParsing="false" style="-fx-background-color: black;" text="Title">
                      <HBox.margin>
                         <Insets left="5.0" right="5.0" />
-                     </HBox.margin></ToggleButton>
+                     </HBox.margin>
+                  </ToggleButton>
                   <ToggleButton fx:id="noteSearch" mnemonicParsing="false" style="-fx-background-color: black;" text="Note">
                      <HBox.margin>
                         <Insets left="5.0" right="5.0" />
-                     </HBox.margin></ToggleButton>
+                     </HBox.margin>
+                  </ToggleButton>
                </children>
                <padding>
                   <Insets bottom="5.0" top="5.0" />
