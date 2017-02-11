@@ -35,7 +35,8 @@
 }
 
 #NotePreview{
-    -fx-margin-insets: 5px;
+    -fx-border-color: transparent;
+    -fx-border-width: 2.0;
 }
 
 #title{
@@ -71,7 +72,7 @@
 #KeyWordEdit{
 	-fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
     -fx-font-size: 12pt;
-    -fx-text-fill: blac
+    -fx-text-fill: black;
 }
 
 

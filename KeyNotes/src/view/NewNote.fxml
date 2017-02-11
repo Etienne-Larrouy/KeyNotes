@@ -21,8 +21,8 @@
       <GridPane prefHeight="561.0" prefWidth="824.0" style="-fx-background-color: #cccccc;" BorderPane.alignment="CENTER">
         <columnConstraints>
             <ColumnConstraints hgrow="NEVER" maxWidth="636.0" minWidth="10.0" prefWidth="93.0" />
-            <ColumnConstraints hgrow="NEVER" maxWidth="636.0" minWidth="50.0" prefWidth="62.0" />
-          <ColumnConstraints hgrow="NEVER" maxWidth="636.0" minWidth="10.0" prefWidth="126.0" />
+            <ColumnConstraints hgrow="NEVER" maxWidth="636.0" minWidth="50.0" prefWidth="96.0" />
+          <ColumnConstraints hgrow="NEVER" maxWidth="636.0" minWidth="10.0" prefWidth="84.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="636.0" minWidth="10.0" prefWidth="324.0" />
           <ColumnConstraints hgrow="NEVER" maxWidth="527.0" minWidth="10.0" prefWidth="105.0" />
             <ColumnConstraints hgrow="NEVER" maxWidth="527.0" minWidth="10.0" prefWidth="100.0" />
@@ -69,16 +69,16 @@
                </font>
             </Label>
             <TextArea fx:id="content" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="217.0" prefWidth="527.0" promptText="Texte" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="5" />
-            <HBox fx:id="keywords_container" alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="23.0" prefWidth="442.0" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="7" GridPane.valignment="CENTER">
+            <Label fx:id="NewNOteKeyWord" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="33.0" prefWidth="93.0" text="Keywords : " GridPane.columnIndex="1" GridPane.rowIndex="7">
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <HBox fx:id="keywords_container" alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="23.0" prefWidth="442.0" GridPane.columnIndex="2" GridPane.columnSpan="3" GridPane.rowIndex="7" GridPane.valignment="CENTER">
                <children>
-                  <Label fx:id="NewNOteKeyWord" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="33.0" prefWidth="93.0" text="Keywords : ">
-                     <padding>
-                        <Insets left="5.0" />
-                     </padding>
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
                   <TextField fx:id="keyword" prefHeight="33.0" prefWidth="75.0" promptText="Keyword" />
                   <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#addKeyword" text="Add">
                      <HBox.margin>

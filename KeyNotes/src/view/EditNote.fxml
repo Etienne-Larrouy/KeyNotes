@@ -63,7 +63,7 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <TextArea fx:id="content" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="217.0" prefWidth="527.0" text="Note prérempli&#10;" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="5" />
+            <TextArea fx:id="content" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="217.0" prefWidth="527.0" text="Note prérempli&#10;" wrapText="true" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="5" />
             <Label fx:id="KeyWordEdit" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="36.0" prefWidth="58.0" text="Keywords" GridPane.columnIndex="1" GridPane.rowIndex="7">
                <padding>
                   <Insets left="5.0" />
