@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.HBox;
@@ -29,6 +30,9 @@ public class ControllerNote implements Initializable {
 
 	@FXML
 	private HBox keywords_container;
+	
+	@FXML
+	private Button returnButton;
 
 	public ControllerNote(Note t) {
 		this.currentNote = t;
@@ -63,6 +67,12 @@ public class ControllerNote implements Initializable {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	@FXML
+	protected void handleReturn(ActionEvent event) {
+		Stage stage = (Stage) returnButton.getScene().getWindow();
+	    stage.close();
 	}
 
 	@Override

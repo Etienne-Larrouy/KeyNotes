@@ -30,6 +30,9 @@ public class ControllerEditNote implements Initializable{
 
 	@FXML
 	private HBox keywords_container;
+	
+	@FXML
+	private Button returnButtonEdit;
 
 	@FXML
 	private TextField title;
@@ -140,5 +143,28 @@ public class ControllerEditNote implements Initializable{
 		}
 
 	}
+	
+	@FXML
+	protected void handleReturn(ActionEvent event) {
+		Parent root = null;
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/Note.fxml"));
+
+		ControllerNote controller = new ControllerNote(this.currentNote);
+		// Set it in the FXMLLoader
+		loader.setController(controller);
+
+		try {
+			root = (Parent) loader.load();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		Scene scene = new Scene(root);
+		this.stage.setScene(scene);
+		this.stage.show();
+	}
+	
+	
 
 }

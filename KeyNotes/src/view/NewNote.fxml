@@ -102,7 +102,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button mnemonicParsing="false" onAction="#handleReturn" text="Return" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Button fx:id="returnButton" mnemonicParsing="false" onAction="#handleReturn" text="Return" GridPane.columnIndex="2" GridPane.rowIndex="1" />
          </children>
          <effect>
             <Lighting diffuseConstant="1.02" specularConstant="0.16">

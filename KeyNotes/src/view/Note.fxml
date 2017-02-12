@@ -87,7 +87,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button maxHeight="30.0" maxWidth="103.0" minHeight="20.0" minWidth="50.0" mnemonicParsing="false" onAction="#editNote" prefHeight="30.0" prefWidth="103.0" text="Retour" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowSpan="3" GridPane.valignment="CENTER">
+            <Button fx:id="returnButton" maxHeight="30.0" maxWidth="103.0" minHeight="20.0" minWidth="50.0" mnemonicParsing="false" onAction="#handleReturn" prefHeight="30.0" prefWidth="103.0" text="Retour" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowSpan="3" GridPane.valignment="CENTER">
                <font>
                   <Font size="14.0" />
                </font>

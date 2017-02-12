@@ -29,6 +29,9 @@ public class ControllerNewNote {
 	private TextField keyword;
 	
 	@FXML
+	private Button returnButton;
+	
+	@FXML
 	private HBox keywords_container;
 
 	@FXML
@@ -77,6 +80,7 @@ public class ControllerNewNote {
 	
 	@FXML
 	protected void handleReturn(ActionEvent event) {
-
+		Stage stage = (Stage) returnButton.getScene().getWindow();
+	    stage.close();
 	}
 }

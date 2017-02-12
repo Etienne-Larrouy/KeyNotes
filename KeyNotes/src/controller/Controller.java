@@ -434,7 +434,7 @@ public class Controller implements Initializable {
 		});
 
 		int i = 0;
-		// Display 10 most used keywords
+		// Display 7 most used keywords
 		for (Map.Entry<String, Integer> entry : Notes.getInstance().getKeywords().getObservableMap().entrySet()) {
 			Button b = new Button(entry.getKey());
 
@@ -448,7 +448,7 @@ public class Controller implements Initializable {
 			keywordsFilter.getChildren().add(b);
 			i++;
 
-			if (i >= 9)
+			if (i >= 6)
 				break;
 		}
 
