@@ -378,6 +378,38 @@ public class Controller implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		
+		// Some examples to fill the Interface
+		
+
+		Note n1 = new Note("Cours de musique","J'ai appris le piano debout");
+		n1.addKeyword("Musique");
+		n1.addKeyword("Piano");
+		n1.addKeyword("Cours");
+		
+		Note n2 = new Note("Cours de Sport","Le tennis de table c'est génial");
+		n2.addKeyword("Sport");
+		n2.addKeyword("Tennis de table");
+		n2.addKeyword("Cours");
+
+		Note n3 = new Note("JavaFX","Cours d'interface de JavaFX");
+		n3.addKeyword("JavaFX");
+		n3.addKeyword("Java");
+		
+		Note n4 = new Note("Programmation","C, C++, Java, ...");
+		n4.addKeyword("C");
+		n4.addKeyword("Java");
+		n4.addKeyword("C++");
+		
+		Note n5 =  new Note("Physique Chimie","P = mg\n, ceci est la formule du Poids");
+		n5.addKeyword("Cours");
+		n5.addKeyword("Physique");
+		
+		Notes.getInstance().addNote(n1);
+		Notes.getInstance().addNote(n2);
+		Notes.getInstance().addNote(n3);
+		Notes.getInstance().addNote(n4);
+		Notes.getInstance().addNote(n5);
 
 		// Radio button state
 		final ToggleGroup group = new ToggleGroup();
