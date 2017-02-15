@@ -39,6 +39,9 @@ public class ControllerPreviewNote implements Initializable {
 		loader.setController(controller);
 
 		stage = new Stage();
+		stage.setMinHeight(400);
+		stage.setMinWidth(600);
+		stage.setTitle(this.currentNote.getTitle());
 
 		root = (Parent) loader.load();
 		Scene scene = new Scene(root);
